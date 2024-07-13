@@ -10,7 +10,7 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
 
-
+    <h2 class="conteudo__subtitulo">Seja bem-vindo!</div>
     <h2 class="conteudo__subtitulo">Gerencie a agenda dos médicos e pacientes de maneira fácil e organizada.</div>
 
     <div class="banner-grupo">

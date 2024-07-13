@@ -1,0 +1,41 @@
+.etiqueta-icone{
+    background: var(--cor-cinza-claro);
+    color: var(--cor-cinza-escuro);
+    display: inline-block;
+    padding: .3em .3em;
+    border-radius: .3em;
+    width: 1.1em;
+    height: 1.2em;
+    white-space: nowrap;
+    transition: transform 1s;
+}
+
+.etiqueta-icone--azul{
+    background-color: #d3eeff;
+    color: var(--cor-azul-escuro);
+}
+
+.etiqueta-icone--amarelo{
+    background-color: #ffe5ab;
+    color: var(--cor-amarelo-escuro);
+}
+
+.etiqueta-icone--verde{
+    background-color: #d0f4a5;
+    color: var(--cor-verde-escuro);
+}
+
+.etiqueta-icone--verde-agua{
+    background-color: #b3fcf8;
+    color: var(--cor-verde-agua-escuro);
+}
+
+.etiqueta-icone--vermelho{
+    background-color: #ffa9b2;
+    color: var(--cor-vermelho-escuro);
+}
+
+.etiqueta-icone:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}

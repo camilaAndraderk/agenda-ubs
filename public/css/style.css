@@ -4,6 +4,9 @@
 @import url(./banner-grupo.css);
 @import url(./footer.css);
 @import url(./lista-redes-sociais.css);
+@import url(./header.css);
+@import url(./tabela.css);
+@import url(./etiqueta-icone.css);
 
 
 :root{
@@ -12,7 +15,6 @@
     --cor-azul-medio: #a2dbff;
     --cor-azul-escuro: #62c1f8;
     --cor-cinza-fundo: #efefef;
-    --cor-cinza-principal: #ccc;
     --cor-verde-agua-escuro: #3b9d98;
     --cor-verde-agua-claro: #8CD4D0;
     --cor-fundo-branco-principal: #fdfdfd;
@@ -51,3 +53,48 @@ a{
 a:hover{
     text-decoration: underline;
 }
+
+@keyframes fade-in {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes largura-total {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 550px){
+    html{
+        font-size: 9px;
+        letter-spacing: .1rem;
+    }
+}
+
+
+@media (max-width: 420px){
+    html{
+        font-size: 8px;
+    }
+}
+

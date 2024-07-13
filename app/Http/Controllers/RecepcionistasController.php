@@ -8,10 +8,19 @@ class RecepcionistasController extends Controller
 {
     public function index(){
             
-        $recepcionistas = [
-            "Camila",
-            "Maria",
-            "Yasmim"
+        $recepcionistas[] = [
+            "nome"  => "Camila",
+            "cpf"   => "111111111111"
+        ];
+
+        $recepcionistas[] = [
+            "nome"  => "Maria",
+            "cpf"   => "111111111111"
+        ];
+
+        $recepcionistas[] = [
+            "nome"  => "Yasmim",
+            "cpf"   => "111111111111"
         ];
 
         return view('recepcionistas.index', compact('recepcionistas'));

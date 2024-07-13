@@ -7,22 +7,38 @@
     <link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('css/index.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('fontawesome/css/all.css')); ?>">
+    <script src="<?php echo e(asset('js/jquery.js')); ?>" defer></script>
+    <script src="<?php echo e(asset('js/menu-principal.js')); ?>" defer></script>
+
     <title>Agenda UBS</title>
 </head>
-<body class="body">
+<body class="body" data-body>
+    
     <header class="header">
-        <nav class="menu-principal">
-            <div class="menu-principal__container">
-                <img src="<?php echo e(asset('img/logo-agenda-ubs.png')); ?>" alt="Logo da agenda da unidade básica de saúde" class="menu-principal__logo">
-                <ul class="menu-principal__lista">
+        <div class="header__principal">
+            <a href="<?php echo e(asset('/home')); ?>" >
+                <img src="<?php echo e(asset('img/logo-agenda-ubs.png')); ?>" alt="Logo da agenda da unidade básica de saúde" class="header__img">    
+            </a>
+            <label class="icone-menu" data-icone-menu="abrir">
+                <input type="checkbox" class="icone-menu__input" data-icone-menu-input>
+                <span class="icone-menu__span icone-menu__span-superior" data-icone-menu-superior></span>
+                <span class="icone-menu__span icone-menu__span-centro" data-icone-menu-centro></span>
+                <span class="icone-menu__span icone-menu__span-inferior" data-icone-menu-inferior></span>
+            </label>
+            <div class="menu-principal menu-principal--mobile" data-div-menu-principal>
+                <ul class="menu-principal__lista menu-principal__lista--mobile" data-menu-principal>
+                   
                     <?php $__currentLoopData = $menuPrincipal; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cadaOpcao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li class="menu-principal__item">
-                            <a href="<?php echo e($cadaOpcao['url']); ?>" class="menu-principal__link"><?php echo e($cadaOpcao['label']); ?></a>
-                        </li>
+                        <a href="<?php echo e($cadaOpcao['url']); ?>" class="menu-principal__link">
+                            <li class="menu-principal__item menu-principal__item--mobile">
+                                <p><?php echo e($cadaOpcao['label']); ?></p>
+                            </li>
+                        </a>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                 </ul>
             </div>
-        </nav>
+        </div>
     </header>
 
     <main class="main">
@@ -45,10 +61,9 @@
         </div>
 
         <ul class="lista-redes-sociais">
-            <li class="lista-redes-sociais__item"><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-square"></i></a></li>
-            <li class="lista-redes-sociais__item"><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram-square"></i></a></li>
-            <li class="lista-redes-sociais__item"><a href="https://twitter.com/" target="_blank"><i class="fa-brands fa-twitter-square"></i></a></li>
-            <li class="lista-redes-sociais__item"><a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube-square"></i></a></li>
+            <li class="lista-redes-sociais__item"><a href="https://www.facebook.com/versatecoficial" target="_blank"><i class="fa-brands fa-facebook-square"></i></a></li>
+            <li class="lista-redes-sociais__item"><a href="https://www.instagram.com/versasaude/" target="_blank"><i class="fa-brands fa-instagram-square"></i></a></li>
+            <li class="lista-redes-sociais__item"><a href="https://ava.versasaude.com.br/" target="_blank"><i class="fa-brands fa-youtube-square"></i></a></li>
         </ul>
 
     </footer>

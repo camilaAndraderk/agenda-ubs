@@ -1,0 +1,28 @@
+.tabela{
+    width: 100%;
+    border: 1px solid var(--cor-cinza-claro);
+}
+
+.tabela__cabecalho__coluna:nth-child(1){
+    width: 50%;
+}
+
+.tabela__cabecalho__coluna{
+    padding: 1em;
+    background: #BBB;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.tabela__corpo__linha:hover .tabela__corpo__coluna{
+    background-color: var(--cor-azul-claro);
+}
+
+.tabela__corpo__coluna{
+    padding: .7em .5em;
+}
+
+.tabela__corpo__coluna--icone{
+    text-align: center;
+}
+

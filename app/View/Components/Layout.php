@@ -25,35 +25,34 @@ class Layout extends Component
     {
         $menuPrincipal[] = [
             "label" => "Agendar Pacientes",
-            "url"   => "agenda/pacientes"
+            "url"   => "/agenda/pacientes"
         ];
         
         $menuPrincipal[] = [
             "label" => "Agendar Médicos",
-            "url"   => "agenda/medicos"
+            "url"   => "/agenda/medicos"
         ];
 
         $menuPrincipal[] = [
             "label" => "Recepcionistas",
-            "url"   => "recepcionistas/index"
+            "url"   => "/recepcionistas"
         ];
 
         $menuPrincipal[] = [
             "label" => "Médicos",
-            "url"   => "medicos/index"
+            "url"   => "/medicos"
         ];
 
         $menuPrincipal[] = [
             "label" => "Pacientes",
-            "url"   => "pacientes/index"
+            "url"   => "/pacientes"
         ];
 
         $menuPrincipal[] = [
             "label" => "Unidades Básicas de Saúde",
-            "url"   => "ubs/index"
+            "url"   => "/ubs"
         ];
 
-        // print_r($menuPrincipal);
         return view('components.layout', compact('menuPrincipal'));
     }
 }

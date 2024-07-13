@@ -1,44 +1,178 @@
-.menu-principal{
-    background-color: var(--cor-fundo-menu);
-    width: 100%;
-    height: var(--altura-cabecalho);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.7rem;
-}
-
-.menu-principal__container{
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 3em;
-}
-
-.menu-principal__logo{
-    height: var(--tamanho-logo);
-}
-
 .menu-principal__lista{
     display: flex;
-    column-gap: 2.2em;
+    align-items: flex-start;
+    column-gap: 1em;
 }
 
-.menu-principal__item{
-    color: var(--cor-texto-principal);
+.menu-principal__item,
+.menu-principal__item--active{
+    color: var(--cor-texto-secundario);
+    cursor: pointer;
+    font-size: 1.8rem;
+    padding: 2.5rem 1rem;
+    position: relative;
+    text-align: center;
 }
 
-.menu-principal__item:hover{
-    color: var(--cor-azul-escuro);
-    font-weight: 600;
+.menu-principal__item::after,
+.menu-principal__item--active::after{
+    background-color: var(--cor-texto-secundario);
+    content: '';
+    height: 4px;
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 0%;
 }
+
+.menu-principal__item--active::after{
+    opacity: 1;
+    width: 100%;
+}
+
+.menu-principal__item:hover::after{
+    animation: fade-in 1.5s ease-out forwards, largura-total .5s forwards;
+}
+
+.menu-principal__dropdown{
+    background: var( --cor-azul-principal);
+    box-shadow: 1px 1px 3px var(--cor-cinza-claro);
+    height: 0;
+    left: 50%;
+    min-width: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 5rem;
+    transform: translateX(-50%);
+    width: auto;
+    z-index: 998;
+}
+
+.menu-principal__dropdown--active{
+    border: 1px solid var(--cor-azul-escuro);
+    height: auto;
+}
+
+.menu-principal__dropdown__item{
+    border-bottom: 1px solid var(--cor-azul-escuro);
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.menu-principal__dropdown__item:hover{
+    background: var(--cor-azul);
+}
+
+.menu-principal__dropdown__item:last-child{
+    border-bottom: none;
+}
+
+.icone-menu{
+    display: none;
+    height: 30px;
+    position: relative;
+    width: 40px;
+}
+
+.icone-menu__input{
+    display: none;
+}
+
+.icone-menu__span{
+    background-color: var(--cor-texto-secundario);
+    border-radius: 15px;
+    height: 7px;
+    position: absolute;
+    transition: 1s;
+    width: 100%;
+}
+
+.icone-menu__span-superior{
+    top: 0;
+}
+
+.icone-menu__span-centro{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icone-menu__span-inferior{
+    bottom: 0;
+}
+
+.icone-menu__input:checked ~ .icone-menu__span-superior{
+    top: 39%;
+    transform: rotate(45deg);
+}
+
+.icone-menu__input:checked ~ .icone-menu__span-centro{
+    opacity: 0;
+}
+
+.icone-menu__input:checked ~ .icone-menu__span-inferior{
+    bottom: 35%;
+    transform: rotate(-45deg);
+}
+
 
 .menu-principal__link{
     color: inherit;
     text-decoration: none;
 }
-
+.menu-principal__link--ativo,
 .menu-principal__link:hover{
     text-decoration: none;
+}
+
+@media (max-width: 800px){
+        
+    .menu-principal{
+        display: none;
+    }
+
+    .icone-menu{
+        cursor: pointer;
+        display: block;
+        z-index: 998;
+    }
+    
+    .menu-principal--mobile{
+        background: inherit;
+        height: 100vh;
+        left: 0;
+        padding-top: 5rem;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 997;
+    }
+
+    .menu-principal__lista--mobile{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .menu-principal__item--mobile{
+        border-bottom: 1px solid var(--cor-cinza-claro);
+    }
+
+    .menu-principal__item--mobile::after{
+        animation: none;
+        background-color: transparent;
+    }
+
+    .menu-principal__dropdown--mobile--active{
+        background: inherit;
+        border: none;
+        box-shadow: none;
+        position: relative;
+        top: 0;
+    }
+
+    .menu-principal__dropdown__item--mobile{
+        border-color: #22538a;
+        padding: 2rem;
+    }
 }
