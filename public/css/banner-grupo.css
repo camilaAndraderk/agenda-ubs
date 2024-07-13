@@ -1,0 +1,40 @@
+
+.banner-grupo{
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.banner-grupo__img{
+    width: 70%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: block;
+}
+
+.banner-grupo__cards{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    width: 83%;
+    column-gap: 2em;
+    margin: 0 auto;
+    position: absolute;
+    transform: translate(-50%, -40%);
+    left: 50%;
+}
+
+.banner-grupo__item{
+    width: 25%;
+    background-color: #fff;
+    text-align: center;
+    padding: 1.5em;
+    row-gap: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-grupo__icone{
+    font-size: 3em;
+    color: var(--cor-azul-escuro);
+}

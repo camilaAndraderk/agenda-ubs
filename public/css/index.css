@@ -1,0 +1,20 @@
+.conteudo__titulo{
+    font-size: 2em;
+    text-align: center;
+}
+
+.conteudo__subtitulo{
+    text-align: center;
+}
+
+.detalhe-fundo{
+    width: 100vw;
+    background-color: var(--cor-azul-escuro);
+    position: absolute;
+    height: 40vh;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+    min-height: 300px;
+    max-height: 600px;
+}

@@ -1,0 +1,15 @@
+.lista-redes-sociais{
+    column-gap: .8rem;
+    display: flex;
+    font-size: 3rem;
+    justify-content: center;
+}
+
+.lista-redes-sociais__item i{
+    color: var(--cor-cinza-escuro);
+    transition: .12s transform;
+}
+
+.lista-redes-sociais__item:hover i{
+    transform: scale(1.2);
+}

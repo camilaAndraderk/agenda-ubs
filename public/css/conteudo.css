@@ -1,0 +1,32 @@
+.conteudo{
+    width: 100%;
+    background-color: var(--cor-fundo-branco-principal);
+    min-height: calc(100vh - var(--altura-cabecalho));
+    font-size: 1.6rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+}
+
+.conteudo__container{
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    padding: 5rem 0;
+}
+
+.conteudo__titulo{
+    font-size: 1.3em;
+    color: var(--cor-azul-escuro);
+    font-weight: 700;
+    font-family: "Quicksand", sans-serif;
+}
+
+.conteudo__subtitulo{
+    font-size: 1.1em;
+}
+
+.conteudo__principal{
+    width: 100%;
+    padding: 1.5em 0;
+    line-height: 1.2em;
+}

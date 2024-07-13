@@ -1,0 +1,44 @@
+.menu-principal{
+    background-color: var(--cor-fundo-menu);
+    width: 100%;
+    height: var(--altura-cabecalho);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+}
+
+.menu-principal__container{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 3em;
+}
+
+.menu-principal__logo{
+    height: var(--tamanho-logo);
+}
+
+.menu-principal__lista{
+    display: flex;
+    column-gap: 2.2em;
+}
+
+.menu-principal__item{
+    color: var(--cor-texto-principal);
+}
+
+.menu-principal__item:hover{
+    color: var(--cor-azul-escuro);
+    font-weight: 600;
+}
+
+.menu-principal__link{
+    color: inherit;
+    text-decoration: none;
+}
+
+.menu-principal__link:hover{
+    text-decoration: none;
+}

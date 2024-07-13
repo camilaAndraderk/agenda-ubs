@@ -1,0 +1,53 @@
+@import url(./reset.css);
+@import url(./menu-principal.css);
+@import url(./conteudo.css);
+@import url(./banner-grupo.css);
+@import url(./footer.css);
+@import url(./lista-redes-sociais.css);
+
+
+:root{
+    --altura-cabecalho: 8rem;
+    --cor-azul-claro: #e9f7ff;
+    --cor-azul-medio: #a2dbff;
+    --cor-azul-escuro: #62c1f8;
+    --cor-cinza-fundo: #efefef;
+    --cor-cinza-principal: #ccc;
+    --cor-verde-agua-escuro: #3b9d98;
+    --cor-verde-agua-claro: #8CD4D0;
+    --cor-fundo-branco-principal: #fdfdfd;
+    --cor-fundo-menu: #EBEBEB;
+    --cor-verde-escuro: #77a53c;
+    --cor-verde-claro: #B1D385;
+    --cor-radape: #e0e0e0;
+    --cor-vermelho-escuro: #ea1539;
+    --cor-vermelho-claro: #F1637B;
+    --cor-amarelo-escuro: #d8a016;
+    --cor-amarelo-claro: #EEC255;
+    --cor-cinza-claro: #CCC;
+    --cor-cinza-escuro: #555;
+    --cor-texto-branco-principal: #efefef;
+    --cor-texto-principal: #333333;
+    --cor-texto-secundario: #6a6a6a;
+    --espaco-borda-principal: 3rem;
+    --tamanho-logo: 4rem;
+}
+
+html{
+    color: var(--cor-texto-principal);
+    font-family: 'PT Sans', sans-serif;
+    font-size: 10px;
+}
+
+.main{
+    position: relative;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
