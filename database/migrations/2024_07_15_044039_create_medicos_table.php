@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('medicos', function (Blueprint $table) {
             $table->id();
+            $table->string('especialidade', 64);
+            $table->string('crm', 13);
             $table->timestamps();
         });
     }

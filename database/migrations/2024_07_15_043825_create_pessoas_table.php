@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('pessoas', function (Blueprint $table) {
             $table->id();
-            $tabela->string('nome', lenght: 128);
-            $tabela->string('telefone', lenght: 11);
-            $tabela->string('email', lenght: 64);
-            $tabela->string('logradouro', lenght: 128);
-            $tabela->unsignedSmallInteger('numero', lenght: 128);
-            $tabela->string('bairro', lenght: 128);
-            $tabela->string('cidade', lenght: 128);
-            $tabela->string('estado', lenght: 2);
-            $tabela->string('cep', lenght: 10);
+            $table->string('nome', 128);
+            $table->string('telefone', 11)      ->nullable();
+            $table->string('email', 64)         ->nullable();
+            $table->string('logradouro', 128)   ->nullable();
+            $table->unsignedSmallInteger('numero')      ->nullable();
+            $table->string('bairro', 128)       ->nullable();
+            $table->string('cidade', 64)        ->nullable();
+            $table->string('estado', 2)         ->nullable();
+            $table->string('cep', 10)           ->nullable();
             $table->timestamps();
         });
     }

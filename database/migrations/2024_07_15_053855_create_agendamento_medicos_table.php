@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('agendamento_medicos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_ubs')->constrained('pessoas_juridicas');
+            $table->time('hora_inicial');
+            $table->time('hora_final');
             $table->timestamps();
         });
     }

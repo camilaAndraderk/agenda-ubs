@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_pessoa')  ->constrained('pessoas');
+            $table->string('usuario', 11)   ->unique(); //cpf
+            $table->date('senha'); //nascimento
             $table->timestamps();
         });
     }

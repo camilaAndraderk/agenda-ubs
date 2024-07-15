@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('funcionalidades', function (Blueprint $table) {
             $table->id();
-            $tabela->string('label', lenght: 64);
-            $tabela->string('rota', lenght:64);
+            $table->string('label', 64);
+            $table->string('rota', 64);
             $table->timestamps();
         });
     }

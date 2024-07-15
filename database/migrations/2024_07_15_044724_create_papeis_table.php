@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('papeis', function (Blueprint $table) {
             $table->id();
+            $table->enum('papel', ['Admin', 'Médico','Recepcionista']);
             $table->timestamps();
         });
     }

@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('pessoas_fisicas', function (Blueprint $table) {
             $table->id();
-            $tabela->string('cpf', lenght: 11);
-            $tabela->date('nascimento');
+            $table->foreignId('id_pessoa')->constrained('pessoas');
+            $table->string('cpf', 11)->unique();
+            $table->date('nascimento');
             $table->timestamps();
         });
     }

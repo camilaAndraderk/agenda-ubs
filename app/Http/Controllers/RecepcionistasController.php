@@ -33,8 +33,7 @@ class RecepcionistasController extends Controller
         return view('recepcionistas.index',
             compact(
                 'recepcionistas', 
-                'mensagemSucesso',
-                '$mensagemErro'
+                'mensagemSucesso'
             )
         );
     }

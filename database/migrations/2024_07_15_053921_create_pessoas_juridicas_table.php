@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pacientes', function (Blueprint $table) {
+        Schema::create('pessoas_juridicas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_pessoa')->constrained('pessoas');
-            $table->string('comorbidades', 256) ->nullable();
-            $table->string('observacao', 256)   ->nullable();
+            $table->string('cnpj', 14);
+            $table->enum('situacao', ['Ativa', 'Inativa']);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pacientes');
+        Schema::dropIfExists('pessoas_juridicas');
     }
 };

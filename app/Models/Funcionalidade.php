@@ -9,6 +9,7 @@ class Funcionalidade extends Model
 {
     use HasFactory;
 
+    protected $table = 'funcionalidades';
     protected $fillable = ['label', 'rota'];
 
 }

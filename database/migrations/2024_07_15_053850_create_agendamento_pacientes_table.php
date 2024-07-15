@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('agendamento_pacientes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_paciente')    ->constrained('pessoas');
+            $table->foreignId('id_medico')      ->constrained('pessoas');
+            $table->foreignId('id_ubs')         ->constrained('pessoas_juridicas');
+            $table->dateTime('data');
+            $table->enum('situacao_consulta', ['Aguardando', 'Concluido','Cancelado', 'Falta']);
+            $table->enum('categoria_paciente', ['Já sou um paciente', 'Primeira consulta']);
+            $table->string('avaliacao_medica', 512);
             $table->timestamps();
         });
     }
