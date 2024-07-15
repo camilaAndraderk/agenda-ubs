@@ -25,32 +25,38 @@ class Layout extends Component
     {
         $menuPrincipal[] = [
             "label" => "Agendar Pacientes",
-            "url"   => "/agenda/pacientes"
+            "rota"   => "recepcionistas.index"
+            // "rota"   => "agenda.pacientes"
         ];
         
         $menuPrincipal[] = [
             "label" => "Agendar Médicos",
-            "url"   => "/agenda/medicos"
+            "rota"   => "recepcionistas.index"
+            // "rota"   => "agenda.medicos"
         ];
 
         $menuPrincipal[] = [
             "label" => "Recepcionistas",
-            "url"   => "/recepcionistas"
+            "rota"   => "recepcionistas.index"
+            // "rota"   => "recepcionistas.index"
         ];
 
         $menuPrincipal[] = [
             "label" => "Médicos",
-            "url"   => "/medicos"
+            "rota"   => "recepcionistas.index"
+            // "rota"   => "medicos.index"
         ];
 
         $menuPrincipal[] = [
             "label" => "Pacientes",
-            "url"   => "/pacientes"
+            "rota"   => "recepcionistas.index"
+            // "rota"   => "pacientes.index"
         ];
 
         $menuPrincipal[] = [
             "label" => "Unidades Básicas de Saúde",
-            "url"   => "/ubs"
+            "rota"   => "recepcionistas.index"
+            // "rota"   => "ubs.index"
         ];
 
         return view('components.layout', compact('menuPrincipal'));

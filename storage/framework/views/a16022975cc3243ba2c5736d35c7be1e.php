@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('css/index.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('fontawesome/css/all.css')); ?>">
     <script src="<?php echo e(asset('js/jquery.js')); ?>" defer></script>
     <script src="<?php echo e(asset('js/menu-principal.js')); ?>" defer></script>
@@ -29,7 +28,7 @@
                 <ul class="menu-principal__lista menu-principal__lista--mobile" data-menu-principal>
                    
                     <?php $__currentLoopData = $menuPrincipal; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cadaOpcao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <a href="<?php echo e($cadaOpcao['url']); ?>" class="menu-principal__link">
+                        <a href="<?php echo e(route($cadaOpcao['rota'])); ?>" class="menu-principal__link">
                             <li class="menu-principal__item menu-principal__item--mobile">
                                 <p><?php echo e($cadaOpcao['label']); ?></p>
                             </li>

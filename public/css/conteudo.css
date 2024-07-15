@@ -6,6 +6,7 @@
     font-family: "Inter", sans-serif;
     font-weight: 300;
     padding-bottom: 9em;
+    box-sizing: border-box;
 }
 
 .conteudo__container{
@@ -20,6 +21,7 @@
     color: var(--cor-azul-escuro);
     font-weight: 700;
     font-family: "Quicksand", sans-serif;
+    text-align: center;
 }
 
 .conteudo__subtitulo{

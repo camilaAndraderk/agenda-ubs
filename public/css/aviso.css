@@ -1,0 +1,51 @@
+.aviso{
+    background-color: var(--cor-cinza-claro);
+    color: var(--cor-cinza-escuro);
+    font-size: .9em;
+    font-weight: 400;
+    width: auto;
+    padding: 1.1em 1.8em;
+    border-radius: .4em;
+    margin: 2em auto;
+    text-align: center;
+}
+
+.aviso--temporario{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.aviso--oculto{
+    display: none;
+}
+
+
+
+.aviso--azul{
+    background-color: var(--cor-azul-claro);
+    color: var(--cor-azul-escuro);
+}
+
+.aviso--amarelo{
+    background-color: var(--cor-amarelo-claro);
+    color: var(--cor-amarelo-escuro);
+}
+
+.aviso--verde{
+    background-color: var(--cor-verde-claro);
+    color: var(--cor-verde-escuro);
+}
+
+.aviso--verde-agua{
+    background-color: var(--cor-verde-agua-claro);
+    color: var(--cor-verde-agua-escuro);
+}
+
+.aviso--vermelho{
+    background-color: var(--cor-vermelho-claro);
+    color: var(--cor-vermelho-escuro);
+}
+

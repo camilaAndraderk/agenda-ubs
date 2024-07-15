@@ -1,4 +1,12 @@
 <x-layout title="Recepcionistas">
+
+    @isset($mensagemSucesso)
+        <div class="aviso aviso--verde">
+            {{ $mensagemSucesso }}
+        </div>
+    @endisset
+
+    <dutton class="botao"><a href="{{ route('recepcionistas.create') }}">Cadastrar</a></dutton>
     
     <table class="tabela">
         <thead class="tabela__cabecalho">
@@ -31,27 +39,31 @@
                         {{ $recepcionista['cpf'] }}
                     </td>
                     <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
-                        <span class="etiqueta-icone etiqueta-icone--azul">
+                        <a href="">
+                            <span class="tag tag--icone tag--azul">
                             <i class="fa-solid fa-info"></i>
-                        </span>
+                            </span>
+                        </a>
                     </td>
                     <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
-                        <span class="etiqueta-icone etiqueta-icone--verde-agua">
+                        <span class="tag tag--icone tag--verde-agua">
                             <i class="fa-solid fa-pencil"></i>
                         </span>
                     </td>
                     <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
-                        <span class="etiqueta-icone etiqueta-icone--verde">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </span>
+                        <form action="{{ route('recepcionistas.destroy', $recepcionista['id']) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="tag tag--icone tag--vermelho">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
                     </td>
                     
                 </tr>
             @endforeach
         </tbody>
-
-
-</table>    
+    </table>    
 
 
 </x-layout>

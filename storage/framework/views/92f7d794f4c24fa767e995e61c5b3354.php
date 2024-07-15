@@ -9,6 +9,7 @@
 <?php $attributes = $attributes->except(\App\View\Components\Layout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('css/index.css')); ?>">
 
     <h2 class="conteudo__subtitulo">Seja bem-vindo!</div>
     <h2 class="conteudo__subtitulo">Gerencie a agenda dos médicos e pacientes de maneira fácil e organizada.</div>

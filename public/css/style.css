@@ -6,31 +6,38 @@
 @import url(./lista-redes-sociais.css);
 @import url(./header.css);
 @import url(./tabela.css);
-@import url(./etiqueta-icone.css);
+@import url(./tag.css);
+@import url(./botao.css);
+@import url(./formulario.css);
+@import url(./aviso.css);
 
 
 :root{
     --altura-cabecalho: 8rem;
-    --cor-azul-claro: #e9f7ff;
+    --cor-azul-claro: #d3eeff;
     --cor-azul-medio: #a2dbff;
     --cor-azul-escuro: #62c1f8;
+    --cor-botao-padrao: #0176c1;
     --cor-cinza-fundo: #efefef;
     --cor-verde-agua-escuro: #3b9d98;
-    --cor-verde-agua-claro: #8CD4D0;
+    --cor-verde-agua-claro: #b3fcf8;
     --cor-fundo-branco-principal: #fdfdfd;
     --cor-fundo-menu: #EBEBEB;
     --cor-verde-escuro: #77a53c;
-    --cor-verde-claro: #B1D385;
+    --cor-verde-claro: #d0f4a5;
     --cor-radape: #e0e0e0;
     --cor-vermelho-escuro: #ea1539;
-    --cor-vermelho-claro: #F1637B;
+    --cor-vermelho-claro: #ffa9b2;
     --cor-amarelo-escuro: #d8a016;
-    --cor-amarelo-claro: #EEC255;
+    --cor-amarelo-claro: #ffe5ab;
     --cor-cinza-claro: #CCC;
     --cor-cinza-escuro: #555;
     --cor-texto-branco-principal: #efefef;
     --cor-texto-principal: #333333;
     --cor-texto-secundario: #6a6a6a;
+    --cor-fundo-input: #F5F5F5;
+    --cor-fundo-input-escuro: #E1E1E1;
+
     --espaco-borda-principal: 3rem;
     --tamanho-logo: 4rem;
 }
@@ -78,6 +85,7 @@ a:hover{
     0%{
         width: 0%;
     }
+    
     100%{
         width: 100%;
     }

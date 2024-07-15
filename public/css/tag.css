@@ -1,0 +1,48 @@
+.tag{
+    background: var(--cor-cinza-claro);
+    color: var(--cor-cinza-escuro);
+    border: none;
+    display: inline-block;
+    padding: .3em .3em;
+    border-radius: .3em;
+    white-space: nowrap;
+    transition: transform 1s;
+    font-weight: 600;
+    box-sizing: content-box;
+    font-size: 1em;
+}
+
+.tag--icone{
+    width: 1.1em;
+    height: 1.2em;
+}
+
+.tag:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.tag--azul{
+    background-color: var(--cor-azul-claro);
+    color: var(--cor-azul-escuro);
+}
+
+.tag--amarelo{
+    background-color: var(--cor-amarelo-claro);
+    color: var(--cor-amarelo-escuro);
+}
+
+.tag--verde{
+    background-color: var(--cor-verde-claro);
+    color: var(--cor-verde-escuro);
+}
+
+.tag--verde-agua{
+    background-color: var(--cor-verde-agua-claro);
+    color: var(--cor-verde-agua-escuro);
+}
+
+.tag--vermelho{
+    background-color: var(--cor-vermelho-claro);
+    color: var(--cor-vermelho-escuro);
+}
