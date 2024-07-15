@@ -20,7 +20,7 @@
 
         <div class="formulario__grupo">
             <label for="cep" class="formulario__label">CEP</label>
-            <input type="text" class="formulario__input" name="cep" id="cep">
+            <input type="text" class="formulario__input" name="cep" id="cep" maxlength="10">
         </div>
     </div>
 
@@ -31,8 +31,8 @@
         </div>
 
         <div class="formulario__grupo">
-            <label for="estado" class="formulario__label">Estado</label>
-            <input type="number" class="formulario__input" name="estado" id="estado">
+            <label for="estado" class="formulario__label">Estado (Sigla)</label>
+            <input type="text" class="formulario__input" name="estado" id="estado" maxlength="2">
         </div>
     </div>
 

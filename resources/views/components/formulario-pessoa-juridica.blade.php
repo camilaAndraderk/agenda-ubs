@@ -15,7 +15,10 @@
 
         <div class="formulario__grupo">
             <label for="situacao" class="formulario__label">Situação</label>
-            <input type="text" class="formulario__input" name="situacao" id="situacao">
+            <select class="formulario__seletor" name="situacao" id="situacao">
+                <option value="Ativa">Ativa</option>
+                <option value="Inativa">Inativa</option>
+            </select>
         </div>
     </div>
 

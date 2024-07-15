@@ -8,7 +8,7 @@
 
         <div class="formulario__grupo">
             <label for="telefone" class="formulario__label">Telefone</label>
-            <input type="text" class="formulario__input" name="telefone" id="telefone">
+            <input type="text" class="formulario__input" name="telefone" id="telefone" maxlength="15">
         </div>
     </div>
 

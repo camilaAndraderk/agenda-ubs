@@ -28,9 +28,9 @@
                 <ul class="menu-principal__lista menu-principal__lista--mobile" data-menu-principal>
                    
                     @foreach($menuPrincipal as $cadaOpcao)
-                        <a href="{{ route($cadaOpcao['rota']) }}" class="menu-principal__link">
+                        <a href="{{ route($cadaOpcao->rota) }}" class="menu-principal__link">
                             <li class="menu-principal__item menu-principal__item--mobile">
-                                <p>{{ $cadaOpcao['label'] }}</p>
+                                <p>{{ $cadaOpcao->label }}</p>
                             </li>
                         </a>
                     @endforeach
