@@ -2,18 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Helpers\Helper;
 use Illuminate\Database\Eloquent\Model;
 
 class PessoaJuridica extends Model
 {
-    use HasFactory;
     protected $table = 'pessoas_juridicas';
     protected $fillable = ['cnpj', 'situacao', 'razao_social', 'id_pessoa'];
 
-    public function pessoa(){
+    public function pessoa()
+    {
+        return $this->belongsTo(Pessoa::class, 'id_pessoa', 'id');
+    }
 
-        return $this->hasOne(Pessoa::class, 'id_pessoa');
+    public static function deletar($idPessoaJuridica){
+        //  deleta pessoa jurídica e pessoa
+        
+        $pessoaJuridica = PessoaJuridica::query()
+        ->where('id', $idPessoaJuridica)
+        ->first();
+
+        $idPessoa = $pessoaJuridica->id_pessoa;
+
+        $pessoaJuridica::destroy($pessoaJuridica->id);
+        Pessoa::destroy($idPessoa);
     }
 
 }

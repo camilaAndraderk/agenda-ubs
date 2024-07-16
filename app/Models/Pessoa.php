@@ -2,17 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Pessoa extends Model
 {
-    use HasFactory;
-    protected $fillable = ['telefone', 'email', 'logradouro', 'numero', 'bairro', 'cidade', 'estado', 'cep'];
+    protected $table = 'pessoas';
+    protected $fillable = ['nome', 'telefone', 'email', 'logradouro', 'numero', 'bairro', 'cidade', 'estado', 'cep'];
 
-    public function pessoaJuridica(){
-
-        return $this->belongsTo(Pessoa::class);
+    public function pessoaJuridica()
+    {
+        return $this->hasOne(PessoaJuridica::class, 'id_pessoa', 'id');
     }
-
 }

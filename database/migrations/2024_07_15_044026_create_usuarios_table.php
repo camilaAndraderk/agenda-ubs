@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('id_pessoa')  ->constrained('pessoas');
             $table->string('usuario', 11)   ->unique(); //cpf
             $table->date('senha'); //nascimento
+            $table->foreignId('id_papel')   ->constrained('papeis');
             $table->timestamps();
         });
     }

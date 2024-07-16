@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pessoas_juridicas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_pessoa')->constrained('pessoas');
-            // $table->string('razao_social', 64);
+            $table->string('razao_social', 64)->nullable();
             $table->string('cnpj', 14);
             $table->enum('situacao', ['Ativa', 'Inativa']);
             $table->timestamps();
