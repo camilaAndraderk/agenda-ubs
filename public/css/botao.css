@@ -47,7 +47,7 @@
 .botao--oculto{
     display: none;
 }
-
+a.botao:hover,
 .botao a:hover{
     text-decoration: none;
 }

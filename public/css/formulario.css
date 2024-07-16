@@ -45,7 +45,8 @@
 .formulario__input:focus,
 .formulario__seletor:focus{
     outline: none;
-    border: .1.5em solid var(--cor-cinza-claro);
+    border: 2px solid var(--cor-cinza-claro);
+    
 }
 
 .formulario__input:disabled,

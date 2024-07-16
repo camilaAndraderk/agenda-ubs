@@ -9,8 +9,13 @@
         </x-formulario-endereco>
 
         <hr class="formulario__divisor">
-        
+
         <x-formulario-contato>
         </x-formulario-contato>
+
+        <div class="formulario__botoes">
+            <button class="botao" type="submit">Salvar</button>
+            <a href="{{back()}}" class="botao botao--vermelho">Cancelar</a>
+        </div>
     </form>
 </x-layout>
