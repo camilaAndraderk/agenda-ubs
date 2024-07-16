@@ -40,7 +40,7 @@ class UbsController extends Controller
         $pessoa->telefone   = $request->telefone;
 
         if($pessoa->save()){
-            
+            //registrando a pessoa jurídica usando o ID da pessoa física como chave estrangeira
             // $pessoaJuridica->razao_social   = $request->razao_social;
             $pessoaJuridica->cnpj           = $request->cnpj;
             $pessoaJuridica->situacao       = $request->situacao;
