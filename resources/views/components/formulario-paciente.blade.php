@@ -14,8 +14,8 @@
     </div>
     <div class="formulario__linha">
         <div class="formulario__grupo">
-            <label for="crm" class="formulario__label">CRM</label>
-            <input type="text" class="formulario__input" name="crm" id="crm">
+            <label for="observacao" class="formulario__label">Observação</label>
+            <input type="text" class="formulario__input" name="observacao" id="observacao">
         </div>
     </div>
 

@@ -8,6 +8,15 @@
 <?php $attributes = $attributes->except(\App\View\Components\Layout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+
+    <?php if(isset($mensagemSucesso)): ?>
+        <div class="aviso aviso--verde">
+            <?php echo e($mensagemSucesso); ?>
+
+        </div>
+    <?php endif; ?>
+
+    <dutton class="botao"><a href="<?php echo e(route('recepcionistas.create')); ?>">Cadastrar</a></dutton>
     
     <table class="tabela">
         <thead class="tabela__cabecalho">
@@ -42,27 +51,31 @@
 
                     </td>
                     <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
-                        <span class="etiqueta-icone etiqueta-icone--azul">
+                        <a href="">
+                            <span class="tag tag--icone tag--azul">
                             <i class="fa-solid fa-info"></i>
-                        </span>
+                            </span>
+                        </a>
                     </td>
                     <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
-                        <span class="etiqueta-icone etiqueta-icone--verde-agua">
+                        <span class="tag tag--icone tag--verde-agua">
                             <i class="fa-solid fa-pencil"></i>
                         </span>
                     </td>
                     <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
-                        <span class="etiqueta-icone etiqueta-icone--verde">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </span>
+                        <form action="<?php echo e(route('recepcionistas.destroy', $recepcionista['id'])); ?>" method="post">
+                            <?php echo csrf_field(); ?>
+                            <?php echo method_field('DELETE'); ?>
+                            <button type="submit" class="tag tag--icone tag--vermelho">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
                     </td>
                     
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
-
-
-</table>    
+    </table>    
 
 
  <?php echo $__env->renderComponent(); ?>

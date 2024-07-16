@@ -29,12 +29,12 @@ Route::controller(RecepcionistasController::class)->group(function(){
 
 Route::controller(UbsController::class)->group(function(){
 
-    Route::get('/ubs',                               'index')   ->name('ubs.index'); // dando um nome para rota
-    Route::get('/ubs/cadastrar',                     'create')  ->name('ubs.create');
-    Route::post('/ubs/salvar',                       'store')   ->name('ubs.store');
-    Route::delete('/ubs/deletar/{recepcionista}',    'destroy') ->name('ubs.destroy');
-    Route::get('/ubs/{recepcionista}/editar',        'edit')    ->name('ubs.edit');
-    Route::put('/ubs/{recepcionista}',               'update')  ->name('ubs.update');
+    Route::get('/ubs',                    'index')   ->name('ubs.index'); // dando um nome para rota
+    Route::get('/ubs/cadastrar',          'create')  ->name('ubs.create');
+    Route::post('/ubs/salvar',            'store')   ->name('ubs.store');
+    Route::delete('/ubs/deletar/{ubs}',   'destroy') ->name('ubs.destroy');
+    Route::get('/ubs/{ubs}/editar',       'edit')    ->name('ubs.edit');
+    Route::put('/ubs/{ubs}',              'update')  ->name('ubs.update');
 
 });
 

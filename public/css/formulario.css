@@ -63,11 +63,15 @@
 
 .formulario__botoes{
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     column-gap: 2em;
     margin: 2em auto;
     row-gap: 1em;
+}
+
+.formulario__botoes .botao{
+    margin: 0;
 }
 
 @media (max-width: 800px){

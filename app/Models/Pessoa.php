@@ -10,4 +10,9 @@ class Pessoa extends Model
     use HasFactory;
     protected $fillable = ['telefone', 'email', 'logradouro', 'numero', 'bairro', 'cidade', 'estado', 'cep'];
 
+    public function pessoaJuridica(){
+
+        return $this->belongsTo(Pessoa::class);
+    }
+
 }

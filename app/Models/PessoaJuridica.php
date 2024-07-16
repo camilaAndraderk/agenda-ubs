@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class PessoaJuridica extends Model
 {
     use HasFactory;
-    protected $fillable = ['cnpj', 'situacao'];
+    protected $table = 'pessoas_juridicas';
+    protected $fillable = ['cnpj', 'situacao', 'razao_social', 'id_pessoa'];
+
+    public function pessoa(){
+
+        return $this->hasOne(Pessoa::class, 'id_pessoa');
+    }
 
 }

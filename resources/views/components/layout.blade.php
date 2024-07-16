@@ -46,12 +46,11 @@
                 <h1 class="conteudo__titulo"> {{ $title }} </h1>
 
                 @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div class="aviso aviso--vermelho">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>
-                                    <i class="fa-solid fa-circle"></i>
-                                    {{ $error }}
+                                    - {{ $error }}
                                 </li>
                             @endforeach
                         </ul>

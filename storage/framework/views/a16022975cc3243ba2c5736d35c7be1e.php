@@ -28,9 +28,9 @@
                 <ul class="menu-principal__lista menu-principal__lista--mobile" data-menu-principal>
                    
                     <?php $__currentLoopData = $menuPrincipal; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cadaOpcao): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <a href="<?php echo e(route($cadaOpcao['rota'])); ?>" class="menu-principal__link">
+                        <a href="<?php echo e(route($cadaOpcao->rota)); ?>" class="menu-principal__link">
                             <li class="menu-principal__item menu-principal__item--mobile">
-                                <p><?php echo e($cadaOpcao['label']); ?></p>
+                                <p><?php echo e($cadaOpcao->label); ?></p>
                             </li>
                         </a>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -44,6 +44,19 @@
         <section class="conteudo">
             <div class="conteudo__container">
                 <h1 class="conteudo__titulo"> <?php echo e($title); ?> </h1>
+
+                <?php if($errors->any()): ?>
+                    <div class="aviso aviso--vermelho">
+                        <ul>
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li>
+                                    - <?php echo e($error); ?>
+
+                                </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
     
                 <div class="conteudo__principal">
                     <?php echo e($slot); ?>

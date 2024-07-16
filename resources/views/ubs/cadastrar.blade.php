@@ -1,5 +1,7 @@
 <x-layout title="Cadastrar Unidade Básica de Saúde">
-    <form action="ubs.store" class="formulario">
+    <form action="{{ route('ubs.store') }}" class="formulario" method="post">
+        @csrf
+
         <x-formulario-pessoa-juridica>
         </x-formulario-pessoa-juridica>
 
@@ -13,9 +15,7 @@
         <x-formulario-contato>
         </x-formulario-contato>
 
-        <div class="formulario__botoes">
-            <button class="botao" type="submit">Salvar</button>
-            <a href="{{back()}}" class="botao botao--vermelho">Cancelar</a>
-        </div>
+        <x-formulario-botoes>
+        </x-formulario-botoes>
     </form>
 </x-layout>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pessoas', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 128);
-            $table->string('telefone', 11)      ->nullable();
+            $table->string('telefone', 16)      ->nullable();
             $table->string('email', 64)         ->nullable();
             $table->string('logradouro', 128)   ->nullable();
             $table->unsignedSmallInteger('numero')      ->nullable();
