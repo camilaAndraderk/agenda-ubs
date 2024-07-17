@@ -35,6 +35,8 @@ Route::controller(UbsController::class)->group(function(){
     Route::delete('/ubs/deletar/{ubs}',   'destroy') ->name('ubs.destroy');
     Route::get('/ubs/{ubs}/editar',       'edit')    ->name('ubs.edit');
     Route::put('/ubs/{ubs}',              'update')  ->name('ubs.update');
+    Route::get('/ubs/{ubs}',              'show')    ->name('ubs.show');
+
 
 });
 

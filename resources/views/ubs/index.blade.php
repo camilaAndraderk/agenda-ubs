@@ -6,7 +6,7 @@
         </div>
     @endisset
 
-    <dutton class="botao"><a href="{{ route('ubs.create') }}">Cadastrar</a></dutton>
+    <button class="botao"><a href="{{ route('ubs.create') }}">Cadastrar</a></button>
     
     <table class="tabela">
         <thead class="tabela__cabecalho">
@@ -39,7 +39,7 @@
                             {{ $cadaUbs['cnpj'] }}
                         </td>
                         <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
-                            <a href="">
+                            <a href="{{ route('ubs.show', $cadaUbs['id']) }}">
                                 <span class="tag tag--icone tag--azul">
                                 <i class="fa-solid fa-info"></i>
                                 </span>

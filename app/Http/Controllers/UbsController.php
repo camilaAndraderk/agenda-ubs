@@ -86,10 +86,10 @@ class UbsController extends Controller
     }
 
     // Tela de edição
-    public function edit(int $pessoaJuridica){
+    public function edit(int $idPessoaJuridica){
 
         $pessoaJuridica = PessoaJuridica::with('pessoa')
-                            ->where('id', $pessoaJuridica)
+                            ->where('id', $idPessoaJuridica)
                             ->first();
         $ubs = [
             'id'            => $pessoaJuridica->id,
@@ -138,7 +138,7 @@ class UbsController extends Controller
         
         $pessoa->fill($pessoaDados);
         $pessoa->save();
-        
+
         if($pessoa){
             $pessoaJuridicaDados = [
                 'cnpj'           => $request->cnpj,
@@ -152,5 +152,68 @@ class UbsController extends Controller
 
         return to_route('ubs.index')
             ->with('mensagem.sucesso', "Unidade Básica '{$pessoa->nome}' editada com sucesso");
+    }
+
+    // mostrando detalhes
+    public function show(int $idPessoaJuridica){
+
+        $pessoaJuridica = PessoaJuridica::with('pessoa')
+                            ->where('id', $idPessoaJuridica)
+                            ->first();
+        // $ubs = [
+        //     'cnpj'          => $pessoaJuridica->cnpj,
+        //     'razao_social'  => $pessoaJuridica->razao_social,
+        //     'situacao'      => $pessoaJuridica->situacao,
+        //     'nome'          => $pessoaJuridica->pessoa->nome,
+        //     'logradouro'    => $pessoaJuridica->pessoa->logradouro,
+        //     'bairro'        => $pessoaJuridica->pessoa->bairro,
+        //     'numero'        => $pessoaJuridica->pessoa->numero,
+        //     'cep'           => $pessoaJuridica->pessoa->cep,
+        //     'cidade'        => $pessoaJuridica->pessoa->cidade,
+        //     'estado'        => $pessoaJuridica->pessoa->estado,
+        //     'email'         => $pessoaJuridica->pessoa->email,
+        //     'telefone'      => $pessoaJuridica->pessoa->telefone
+        // ];
+
+        
+
+
+        $ubs['nome']['label']          = 'Nome';
+        $ubs['nome']['valor']          = (empty($pessoaJuridica->pessoa->nome)          ? '-' : $pessoaJuridica->pessoa->nome);
+
+        $ubs['cnpj']['label']          = 'CNPJ';
+        $ubs['cnpj']['valor']          = (empty($pessoaJuridica->cnpj)                  ? '-' : $pessoaJuridica->cnpj);
+
+        $ubs['razao_social']['label']  = 'Razão Social';
+        $ubs['razao_social']['valor']  = (empty($pessoaJuridica->razao_social)          ? '-' : $pessoaJuridica->razao_social);
+
+        $ubs['situacao']['label']      = 'Situação';
+        $ubs['situacao']['valor']      = (empty($pessoaJuridica->situacao)              ? '-' : $pessoaJuridica->situacao);
+
+        $ubs['email']['label']         = 'E-mail';
+        $ubs['email']['valor']         = (empty($pessoaJuridica->pessoa->email)         ? '-' : $pessoaJuridica->pessoa->email);
+
+        $ubs['telefone']['label']      = 'Telefone';
+        $ubs['telefone']['valor']      = (empty($pessoaJuridica->pessoa->telefone)      ? '-' : $pessoaJuridica->pessoa->telefone);
+
+        $ubs['logradouro']['label']    = 'Logradouro';
+        $ubs['logradouro']['valor']    = (empty($pessoaJuridica->pessoa->logradouro)    ? '-' : $pessoaJuridica->pessoa->logradouro);
+
+        $ubs['bairro']['label']        = 'Bairro';
+        $ubs['bairro']['valor']        = (empty($pessoaJuridica->pessoa->bairro)        ? '-' : $pessoaJuridica->pessoa->bairro);
+
+        $ubs['numero']['label']        = 'Número';
+        $ubs['numero']['valor']        = (empty($pessoaJuridica->pessoa->numero)        ? '-' : $pessoaJuridica->pessoa->numero);
+
+        $ubs['cep']['label']           = 'CEP';
+        $ubs['cep']['valor']           = (empty($pessoaJuridica->pessoa->cep)           ? '-' : $pessoaJuridica->pessoa->cep);
+
+        $ubs['cidade']['label']        = 'Cidade';
+        $ubs['cidade']['valor']        = (empty($pessoaJuridica->pessoa->cidade)        ? '-' : $pessoaJuridica->pessoa->cidade);
+
+        $ubs['estado']['label']        = 'Estado';
+        $ubs['estado']['valor']        = (empty($pessoaJuridica->pessoa->estado)        ? '-' : $pessoaJuridica->pessoa->estado);
+
+        return view('ubs.detalhes', compact(['ubs']));
     }
 }
