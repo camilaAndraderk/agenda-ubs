@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
+use App\Http\Requests\RecepcionistaAtualizarFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\RecepcionistaFormRequest;
 use App\Models\Pessoa;
@@ -45,10 +46,12 @@ class RecepcionistaController extends Controller
 
     // formulário de criação
     public function create(){
-            
+        
+        // Buscando unidades básicas para seletor
         $pessoasJuridicas = PessoaJuridica::with('pessoa')
                             ->where('situacao', 'ativa')
                             ->get();
+        
         $ubs = [];
 
         foreach ($pessoasJuridicas as $pessoaJuridica) {
@@ -150,81 +153,112 @@ class RecepcionistaController extends Controller
     }
 
     // formulário de edição
-    public function edit(int $recepcionista){
+    public function edit(int $idPessoa){
 
-        return view('recepcionista.editar', compact('recepcionista'));
+        $dados = PessoaFisica::buscaDadosCompletosPessoaFisica($idPessoa);
+
+        $recepcionista = [
+            'id'            => $dados->id_pessoa,
+            'cpf'           => $dados->cpf,
+            'nascimento'    => $dados->nascimento,
+            'nome'          => $dados->nome,
+            'logradouro'    => $dados->logradouro,
+            'bairro'        => $dados->bairro,
+            'numero'        => $dados->numero,
+            'cep'           => $dados->cep,
+            'cidade'        => $dados->cidade,
+            'estado'        => $dados->estado,
+            'email'         => $dados->email,
+            'telefone'      => $dados->telefone,
+            'ubs'           => $dados->id_ubs
+        ];
+
+        // Buscando unidades básicas para seletor
+        $pessoasJuridicas = PessoaJuridica::with('pessoa')
+                            ->where('situacao', 'ativa')
+                            ->get();
+        $ubs = [];
+
+        foreach ($pessoasJuridicas as $pessoaJuridica) {
+            $ubs[] = [
+                'id'    => $pessoaJuridica->id,
+                'nome'  => $pessoaJuridica->pessoa->nome,
+                'cnpj'  => $pessoaJuridica->cnpj
+            ];
+        }
+
+        return view('recepcionista.editar', compact('recepcionista', 'ubs'));
 
     }
 
     // salvando atualizações
-    public function update(RecepcionistaFormRequest $recepcionista, Request $request){
+    public function update(int $idPessoa, RecepcionistaAtualizarFormRequest $request){
+        
+        $pessoa = Pessoa::query()
+                    ->where('id', $idPessoa)
+                    ->first();
+
+                    
+        $pessoaDados = [
+            'nome'       => $request->nome,
+            'logradouro' => $request->logradouro,
+            'bairro'     => $request->bairro,
+            'numero'     => $request->numero,
+            'cep'        => $request->cep,
+            'cidade'     => $request->cidade,
+            'estado'     => $request->estado,
+            'email'      => $request->email,
+            'telefone'   => $request->telefone
+        ];
+        
+        $pessoa->fill($pessoaDados);
+        $pessoa->save();
+        
+        
+        if($pessoa){
+            
+            // Editando pessoa física
+            $pessoaFisica = PessoaFisica::query()
+                ->where('id_pessoa', $pessoa->id)
+                ->first();
+
+            $pessoaFisicaDados = [
+                'nascimento' => $request->nascimento
+            ];
+
+            $pessoaFisica->fill($pessoaFisicaDados);
+            $pessoaFisica->save();
 
 
-        // return to_route( 'recepcionista.index')
-        //     ->with('mensagem.sucesso', "Recepcionista ' {$recepcionista->nome} ' editada com sucesso.");
+            if($pessoaFisica){
+
+                // Editando ubs que o usuário possui acesso
+                $usuario = Usuario::where('id_pessoa', $pessoa->id)
+                            ->first();
+
+                $usuarioUbs = UsuarioUbs::where('id_usuario', $usuario->id)
+                                ->first();
+                $dadosUsuarioUbs = [
+                    'id_ubs' => $request->ubs
+                ];
+
+                $usuarioUbs->fill($dadosUsuarioUbs);
+                $usuarioUbs->save();
+            }
+
+            $request->session()->flash('mensagem.sucesso', "Recepcionista '{$pessoa->nome}' editada com sucesso");
+        }
+
+        return to_route( 'recepcionista.index');
     }
 
     // mostrando detalhes
     public function show(int $idPessoa){
-    
-        // $pessoaFisica = PessoaFisica::with('pessoa')
-        //             ->where('id', $idPessoa)
-        //             ->first();
-        
-        // $idPessoa  = $pessoaFisica->pessoa->nome;               
-        // $usuario   = Usuario::where('id_pessoa', $idPessoa)
+           
+        $dados = PessoaFisica::buscaDadosCompletosPessoaFisica($idPessoa);
 
-        
-        $dados = DB::select("
-            SELECT        
-                    pf.id AS 'id_pessoa',
-                    pf.nome,
-                    pf.telefone,
-                    pf.email,
-                    pf.logradouro,
-                    pf.numero,
-                    pf.bairro,
-                    pf.cidade,
-                    pf.estado,
-                    pf.cep,
-                    pessoas_fisicas.id AS 'id_pessoa_fisica',
-                    pessoas_fisicas.cpf,
-                    pessoas_fisicas.nascimento,
-                    usuarios.id AS 'id_usuario',
-                    usuarios.papel,
-                    pj.id AS 'id_ubs',
-                    pj.nome AS 'nome_ubs'
-                FROM
-                    pessoas pf
-                INNER JOIN
-                    pessoas_fisicas
-                    ON
-                    pessoas_fisicas.id_pessoa = pf.id
-                INNER JOIN
-                    usuarios
-                    ON
-                    usuarios.id_pessoa = pf.id
-                INNER JOIN
-                    usuario_ubs
-                    ON
-                    usuario_ubs.id_usuario = usuarios.id
-                INNER JOIN
-                    pessoas_juridicas
-                    ON
-                    pessoas_juridicas.id = usuario_ubs.id_ubs
-                INNER JOIN
-                    pessoas pj
-                    ON
-                    pj.id = pessoas_juridicas.id_pessoa
-                WHERE
-                    pf.id = ?",
-            [$idPessoa]
-        );
-
-        $dados      = $dados[0];
         $dataNascimento = Carbon::parse($dados->nascimento)->format('d/m/Y');
         
-
         $recepcionista['nome']['label']          = 'Nome';
         $recepcionista['nome']['valor']          = (empty($dados->nome)          ? '-' : $dados->nome);
 

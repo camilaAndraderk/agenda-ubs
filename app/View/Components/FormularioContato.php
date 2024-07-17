@@ -12,8 +12,8 @@ class FormularioContato extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public $dados = null,
-        public $update = null
+        public $dados   = null,
+        public $update  = null
 
     )
     {

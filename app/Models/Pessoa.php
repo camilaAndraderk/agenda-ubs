@@ -29,4 +29,6 @@ class Pessoa extends Model
         $valor = preg_replace( array( '/[ ]/' , '/[^0-9]/' ) , array( '' , '' ) , $valor);
         return $valor;
     }
+
+    
 }

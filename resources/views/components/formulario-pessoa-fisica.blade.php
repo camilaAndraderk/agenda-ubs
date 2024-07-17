@@ -36,6 +36,7 @@
                     name="cpf"
                     @if (isset($update))
                         value="{{ $dados['cpf'] }}"
+                        disabled
                     @else
                         value="{{ old('cpf') }}"
                     @endif
