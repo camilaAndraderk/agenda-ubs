@@ -1,5 +1,5 @@
 <fildset class="formulario__secao">
-    <div class="formulario__linha" data-comorbidades>
+    <div class="formulario__linha">
         <div class="formulario__grupo">
             <label for="comorbidades" class="formulario__label">Comorbidades</label>
             <textarea
@@ -7,12 +7,13 @@
                 name="comorbidades"
                 id="comorbidades"
                 maxlength="256"
+            >
                 @if (isset($update))
-                    value="{{ $dados['comorbidades'] }}"
+                    {{ $dados['comorbidades'] }}
                 @else
-                    value="{{ old('comorbidades') }}"
+                    {{ old('comorbidades') }}
                 @endif
-            > </textarea>
+            </textarea>
         </div>
     </div>
     <div class="formulario__linha">
@@ -24,12 +25,13 @@
                 name="observacao"
                 id="observacao"
                 maxlength="256"
+            >
                 @if (isset($update))
-                    value="{{ $dados['observacao'] }}"
+                    {{ ($dados['observacao']) }}
                 @else
-                    value="{{ old('observacao') }}"
+                    {{ old('observacao') }}
                 @endif
-            > </textarea>
+            </textarea>
         </div>
     </div>
 

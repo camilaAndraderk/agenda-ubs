@@ -287,7 +287,7 @@ class RecepcionistaController extends Controller
         $recepcionista['estado']['valor']        = (empty($dados->estado)        ? '-' : $dados->estado);
 
         $recepcionista['ubs']['label']          = 'Unidade Básica';
-        $recepcionista['ubs']['valor']          = (empty($dados->nome_ubs)        ? '-' : $dados->nome_ubs);
+        $recepcionista['ubs']['valor']          = (empty($dados->nome_ubs)       ? '-' : $dados->nome_ubs);
 
         return view('recepcionista.detalhes', compact(['recepcionista']));
             

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
+use App\Http\Requests\PacienteAtualizarFormRequest;
 use App\Http\Requests\PacienteFormRequest;
 use App\Models\Paciente;
 use App\Models\Pessoa;
@@ -154,6 +155,104 @@ class PacienteController extends Controller
 
         return view('paciente.detalhes', compact(['paciente']));
             
+    }
+
+    // formulário de edição
+    public function edit(int $idPessoa){
+
+        $dados = Paciente::buscaDadosCompletosPaciente($idPessoa);
+        
+        $paciente = [
+            'id'            => $dados->id_pessoa,
+            'cpf'           => $dados->cpf,
+            'nascimento'    => $dados->nascimento,
+            'nome'          => $dados->nome,
+            'logradouro'    => $dados->logradouro,
+            'bairro'        => $dados->bairro,
+            'numero'        => $dados->numero,
+            'cep'           => $dados->cep,
+            'cidade'        => $dados->cidade,
+            'estado'        => $dados->estado,
+            'email'         => $dados->email,
+            'telefone'      => $dados->telefone,
+            'comorbidades'  => $dados->comorbidades,
+            'observacao'    => $dados->observacao_paciente,
+
+        ];
+
+        return view('paciente.editar', compact('paciente'));
+
+    }
+
+    public function update(int $idPessoa, PacienteAtualizarFormRequest $request){
+        
+        $pessoa = Pessoa::query()
+                    ->where('id', $idPessoa)
+                    ->first();
+
+                    
+        $pessoaDados = [
+            'nome'       => $request->nome,
+            'logradouro' => $request->logradouro,
+            'bairro'     => $request->bairro,
+            'numero'     => $request->numero,
+            'cep'        => $request->cep,
+            'cidade'     => $request->cidade,
+            'estado'     => $request->estado,
+            'email'      => $request->email,
+            'telefone'   => $request->telefone
+        ];
+        
+        $pessoa->fill($pessoaDados);
+        $pessoa->save();
+        
+        
+        if($pessoa){
+            
+            // Editando pessoa física
+            $pessoaFisica = PessoaFisica::query()
+                ->where('id_pessoa', $pessoa->id)
+                ->first();
+
+            $pessoaFisicaDados = [
+                'nascimento' => $request->nascimento
+            ];
+
+            $pessoaFisica->fill($pessoaFisicaDados);
+            $pessoaFisica->save();
+
+
+            if($pessoaFisica){
+
+                // Informações de paciente
+
+                $dadosPaciente = [
+                    'comorbidades'  => $request->comorbidades,
+                    'observacao'    => $request->observacao,
+                    'id_pessoa'     => $pessoa->id,
+                ];
+                
+                Paciente::create($dadosPaciente);
+
+
+                // Editando ubs que o usuário possui acesso
+                $usuario = Usuario::where('id_pessoa', $pessoa->id)
+                            ->first();
+
+                $usuarioUbs = UsuarioUbs::where('id_usuario', $usuario->id)
+                                ->first();
+                $dadosUsuarioUbs = [
+                    'id_ubs' => $request->ubs
+                ];
+
+                $usuarioUbs->fill($dadosUsuarioUbs);
+                $usuarioUbs->save();
+            }
+
+            $request->session()->flash('mensagem.sucesso', "Recepcionista '{$pessoa->nome}' editada com sucesso");
+        }
+
+        return to_route( 'paciente.index');
     }
 
 }
