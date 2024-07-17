@@ -1,4 +1,5 @@
 <x-layout title="Cadastrar Unidade Básica de Saúde">
+
     <form action="{{ route('ubs.store') }}" class="formulario" method="post">
         @csrf
 

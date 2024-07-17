@@ -1,4 +1,5 @@
 <x-layout title="Informações da Unidade Básica de Saúde">
+    
     <div class="detalhes">
         <ul class="detalhes__lista">
             @foreach ($ubs as $informacao)

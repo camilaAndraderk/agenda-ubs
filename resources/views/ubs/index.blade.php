@@ -1,5 +1,7 @@
 <x-layout title="Unidades Básicas de Saúde">
 
+    <link rel="stylesheet" href="{{ asset('/css/view/index.css') }}">
+
     @isset($mensagemSucesso)
         <div class="aviso aviso--verde">
             {{ $mensagemSucesso }}

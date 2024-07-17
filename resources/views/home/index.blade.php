@@ -2,8 +2,8 @@
 <x-layout title="Agenda Unidade Básica de Saúde">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 
-    <h2 class="conteudo__subtitulo">Seja bem-vindo!</div>
-    <h2 class="conteudo__subtitulo">Gerencie a agenda dos médicos e pacientes de maneira fácil e organizada.</div>
+    <h2 class="conteudo__subtitulo">Seja bem-vindo!</h2>
+    <h2 class="conteudo__subtitulo">Gerencie a agenda dos médicos e pacientes de maneira fácil e organizada.</h2>
 
     <div class="banner-grupo">
         <img src="{{ asset('img/banner-principal.jpg') }}" alt="Paciente com seu pai e sua médica" class="banner-grupo__img">
