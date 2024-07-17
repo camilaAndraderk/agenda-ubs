@@ -160,23 +160,6 @@ class UbsController extends Controller
         $pessoaJuridica = PessoaJuridica::with('pessoa')
                             ->where('id', $idPessoaJuridica)
                             ->first();
-        // $ubs = [
-        //     'cnpj'          => $pessoaJuridica->cnpj,
-        //     'razao_social'  => $pessoaJuridica->razao_social,
-        //     'situacao'      => $pessoaJuridica->situacao,
-        //     'nome'          => $pessoaJuridica->pessoa->nome,
-        //     'logradouro'    => $pessoaJuridica->pessoa->logradouro,
-        //     'bairro'        => $pessoaJuridica->pessoa->bairro,
-        //     'numero'        => $pessoaJuridica->pessoa->numero,
-        //     'cep'           => $pessoaJuridica->pessoa->cep,
-        //     'cidade'        => $pessoaJuridica->pessoa->cidade,
-        //     'estado'        => $pessoaJuridica->pessoa->estado,
-        //     'email'         => $pessoaJuridica->pessoa->email,
-        //     'telefone'      => $pessoaJuridica->pessoa->telefone
-        // ];
-
-        
-
 
         $ubs['nome']['label']          = 'Nome';
         $ubs['nome']['valor']          = (empty($pessoaJuridica->pessoa->nome)          ? '-' : $pessoaJuridica->pessoa->nome);

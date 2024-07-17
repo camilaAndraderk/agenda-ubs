@@ -12,20 +12,14 @@ class Usuario extends Model
     protected $with = ['papel', 'pessoa'];
     protected $fillable = ['usuario', 'senha'];
 
-    public function pessoa(){
-
-        return $this->hasOne(Pessoa::class, 'id');
+    public function pessoa()
+    {
+        return $this->belongsTo(Pessoa::class, 'id_pessoa', 'id');
     }
 
-
-    public function scopeMedicos(Builder $query){
-        
-        return $query->where('papel', 'Médico');
-    }
-
-    public function scopeRecepcionistas(Builder $query){
-        
-        return $query->where('papel', 'Recepcionista');
+    public function usuarioUbs()
+    {
+        return $this->hasOne(UsuarioUbs::class, 'id_usuario', 'id');
     }
 
 }

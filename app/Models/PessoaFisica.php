@@ -10,8 +10,9 @@ class PessoaFisica extends Model
     use HasFactory;
     protected $fillable = ['cpf', 'nascimento'];
 
-    public function pessoa(){
-
-        return $this->hasOne(Pessoa::class, 'id_pessoa');
+    public function pessoa()
+    {
+        return $this->belongsTo(Pessoa::class, 'id_pessoa', 'id');
     }
+
 }

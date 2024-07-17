@@ -13,4 +13,14 @@ class Pessoa extends Model
     {
         return $this->hasOne(PessoaJuridica::class, 'id_pessoa', 'id');
     }
+
+    public function pessoaFisica()
+    {
+        return $this->hasOne(PessoaFisica::class, 'id_pessoa', 'id');
+    }
+
+    public function usuario()
+    {
+        return $this->hasOne(Usuario::class, 'id_pessoa', 'id');
+    }
 }

@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use Illuminate\Http\Request;
 use App\Http\Requests\RecepcionistaFormRequest;
+use App\Models\Pessoa;
+use App\Models\PessoaJuridica;
 
-class RecepcionistasController extends Controller
+class RecepcionistaController extends Controller
 {
     // exibindo dados
     public function index(){
-
-        $mensagemSucesso    = session('mensagem.sucesso');
 
         $recepcionistas[] = [
             "id"    => "1",
@@ -30,10 +31,9 @@ class RecepcionistasController extends Controller
             "cpf"   => "111111111111"
         ];
 
-        return view('recepcionistas.index',
+        return view('recepcionista.index',
             compact(
-                'recepcionistas', 
-                'mensagemSucesso'
+                'recepcionistas'
             )
         );
     }
@@ -41,59 +41,45 @@ class RecepcionistasController extends Controller
     // formulário de criação
     public function create(){
             
-        // $nomePessoa = $request->input('nome');
+        
 
-        return view('recepcionistas.cadastrar');
+        return view('recepcionista.cadastrar');
     }
 
     // salvando dados
     public function store(RecepcionistaFormRequest $request){
     
-        
-        $recepcionista = Recepcionista::create($request->all());
+
         
         return to_route('recepcionistas.index')
             ->with('mensagem.sucesso', "Recepcionista '{$recepcionista->nome}' cadastrada com sucesso"); // flash messege
     }
 
     // deletando dados
-    public function destroy(Recepcionista $recepcionista){
+    public function destroy(int $recepcionista){
 
-        // $recepcionistaId    = $request->id;
-        // $recepcionista      = Recepcionista::find($recepcionistaId);
-
-        // Recepcionista::destroy($recepcionistaId);
-
-        // faz um select e depois um delete
-        $recepcionista->delete();
-
-
-        // Enviando mensagem de sucesso para a sessão
-        // $request->session()->flash('mensagem.sucesso', "Recepcionista' {$recepcionista->nome} 'removida com sucesso");
-
+   
         return to_route('recepcionistas.index')
             ->with('mensagem.sucesso', "Recepcionista' {$recepcionista->nome} 'removida com sucesso");
     }
 
     // formulário de edição
-    public function edit(Recepcionista $recepcionista){
+    public function edit(int $recepcionista){
 
-        return view('recepcionistas.editar', compact('recepcionista'));
+        return view('recepcionista.editar', compact('recepcionista'));
 
     }
 
     // salvando atualizações
     public function update(RecepcionistaFormRequest $recepcionista, Request $request){
 
-        $recepcionista->fill($request->all());
-        $recepcionista->save();
 
         return to_route( 'recepcionista.index')
             ->with('mensagem.sucesso', "Recepcionista ' {$recepcionista->nome} ' editada com sucesso.");
     }
 
     // mostrando detalhes
-    public function show(Recepcionista $recepcionista){
+    public function show(int $recepcionista){
 
         return to_route( 'recepcionista.show', compact($recepcionista));
     }

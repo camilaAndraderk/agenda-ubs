@@ -15,6 +15,11 @@ class PessoaJuridica extends Model
         return $this->belongsTo(Pessoa::class, 'id_pessoa', 'id');
     }
 
+    public function usuarioUbs()
+    {
+        return $this->hasOne(UsuarioUbs::class, 'id_ubs', 'id');
+    }
+
     public static function deletar($idPessoaJuridica){
         //  deleta pessoa jurídica e pessoa
         

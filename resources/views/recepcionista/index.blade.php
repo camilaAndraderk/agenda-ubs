@@ -6,7 +6,7 @@
         </div>
     @endisset
 
-    <dutton class="botao"><a href="{{ route('recepcionistas.create') }}">Cadastrar</a></dutton>
+    <button class="botao"><a href="{{ route('recepcionistas.create') }}">Cadastrar</a></button>
     
     <table class="tabela">
         <thead class="tabela__cabecalho">
