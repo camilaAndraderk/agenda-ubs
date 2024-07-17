@@ -46,3 +46,12 @@
     background-color: var(--cor-vermelho-claro);
     color: var(--cor-vermelho-escuro);
 }
+
+.tag--desabilitada{
+    opacity: 0.4;
+}
+
+.tag--desabilitada:hover{
+    cursor: auto;
+    transform: scale(1);
+}

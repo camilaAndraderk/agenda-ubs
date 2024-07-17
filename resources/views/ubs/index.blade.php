@@ -55,7 +55,7 @@
                         <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
                             <a href="{{ route('ubs.show', $cadaUbs['id']) }}">
                                 <span class="tag tag--icone tag--azul">
-                                <i class="fa-solid fa-info"></i>
+                                    <i class="fa-solid fa-info"></i>
                                 </span>
                             </a>
                         </td>
@@ -65,13 +65,19 @@
                             </a>
                         </td>
                         <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
-                            <form action="{{ route('ubs.destroy', $cadaUbs['id']) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="tag tag--icone tag--vermelho">
+                            @if ($cadaUbs['permitirExclusao'])
+                                <form action="{{ route('ubs.destroy', $cadaUbs['id']) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="tag tag--icone tag--vermelho">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form>
+                            @else
+                                <span class="tag tag--icone tag--vermelho tag--desabilitada">
                                     <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </form>
+                                </span>
+                            @endif
                         </td>
             
                     </tr>

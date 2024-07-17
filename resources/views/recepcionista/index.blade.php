@@ -31,9 +31,9 @@
                 <th class="tabela__cabecalho__coluna">
                     Editar
                 </th>
-                <th class="tabela__cabecalho__coluna">
+                <!-- <th class="tabela__cabecalho__coluna">
                     Apagar
-                </th>
+                </th> -->
             </tr>
         </thead>
         <tbody class="tabela__corpo">
@@ -58,7 +58,7 @@
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
                         </td>
-                        <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
+                        <!-- <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
                             <form action="{{ route('recepcionista.destroy', $recepcionista['id']) }}" method="post">
                                 @csrf
                                 @method('DELETE')
@@ -66,13 +66,13 @@
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </form>
-                        </td>
+                        </td> -->
             
                     </tr>
                 @endforeach
             @else
                 <tr class="tabela__corpo__linha">
-                    <td class="tabela__corpo__coluna tabela__corpo__coluna--icone" colspan="5">
+                    <td class="tabela__corpo__coluna tabela__corpo__coluna--icone" colspan="4">
                         Não existem recepcionistas cadastradas
                     </td>            
                 </tr>

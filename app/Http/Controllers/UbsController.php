@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UbsFormRequest;
 use App\Models\Pessoa;
 use App\Models\PessoaJuridica;
+use App\Models\UsuarioUbs;
 
 class UbsController extends Controller
 {
@@ -18,16 +19,32 @@ class UbsController extends Controller
         $mensagemErro       = $request->session()->get('mensagem.erro');
 
         $pessoasJuridicas = PessoaJuridica::with('pessoa')->get();
-        $ubs = [];
+        $usuarioUbs       = UsuarioUbs::get();
+        $ubsComUsuario    = $usuarioUbs->pluck('id_ubs')->toArray();
         
+        // Montando dados
+        $ubs = [];
+        $i = 0;
+
         foreach ($pessoasJuridicas as $pessoaJuridica) {
-            $ubs[] = [
-                'id'        => $pessoaJuridica->id,
-                'nome'      => $pessoaJuridica->pessoa->nome,
-                'cnpj'      => $pessoaJuridica->cnpj,
-                'situacao'  => $pessoaJuridica->situacao
+
+            $ubs[$i] = [
+                'id'                => $pessoaJuridica->id,
+                'nome'              => $pessoaJuridica->pessoa->nome,
+                'cnpj'              => $pessoaJuridica->cnpj,
+                'situacao'          => $pessoaJuridica->situacao,
+                'permitirExclusao'  => true,
             ];
+
+            if(in_array($pessoaJuridica->id, $ubsComUsuario)){
+                // não permite a exclusão caso tenha usuário no ubs
+
+                $ubs[$i]['permitirExclusao'] = false;
+            }
+            $i++;
         }
+
+        // Helper::pr($ubs);
 
         return view('ubs.index')
             ->with('ubs', $ubs)
