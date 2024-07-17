@@ -10,4 +10,8 @@ class Paciente extends Model
     use HasFactory;
     protected $fillable = ['comorbidades', 'observacao'];
 
+    public function pessoa()
+    {
+        return $this->belongsTo(Pessoa::class, 'id_pessoa', 'id');
+    }
 }

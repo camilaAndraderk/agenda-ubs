@@ -24,8 +24,6 @@ class FormularioEndereco extends Component
      */
     public function render(): View|Closure|string
     {
-
-
         return view('components.formulario-endereco');
     }
 }

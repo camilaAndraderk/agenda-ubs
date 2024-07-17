@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MedicoController;
+use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\RecepcionistaController;
 use App\Http\Controllers\UbsController;
 
@@ -53,3 +54,13 @@ Route::controller(MedicoController::class)->group(function(){
 });
 
 
+Route::controller(PacienteController::class)->group(function(){
+
+    Route::get('/paciente',                       'index')   ->name('paciente.index');
+    Route::get('/paciente/cadastrar',             'create')  ->name('paciente.create');
+    Route::post('/paciente/salvar',               'store')   ->name('paciente.store');
+    // Route::delete('/paciente/deletar/{paciente}',   'destroy') ->name('paciente.destroy');
+    Route::get('/paciente/{paciente}/editar',       'edit')    ->name('paciente.edit');
+    Route::put('/paciente/{paciente}',              'update')  ->name('paciente.update');
+    Route::get('/paciente/{paciente}',              'show')    ->name('paciente.show');
+});
