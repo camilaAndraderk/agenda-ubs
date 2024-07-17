@@ -41,7 +41,8 @@ class PessoaJuridica extends Model
                     usuarios.id AS 'id_usuario',
                     usuarios.papel,
                     pessoas_juridicas.id AS 'id_ubs',
-                    pj.nome AS 'nome_ubs'
+                    pj.nome AS 'nome_ubs',
+                    usuario_ubs.id AS 'id_usuario_ubs'
                 FROM
                     pessoas pf
                 INNER JOIN
