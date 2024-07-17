@@ -23,13 +23,14 @@ class RecepcionistaController extends Controller
         $mensagemSucesso    = $request->session()->get('mensagem.sucesso');
         $mensagemErro       = $request->session()->get('mensagem.erro');
 
-            $pessoas = Pessoa::whereHas('usuario', function ($query) {
-                $query->where('papel', 'Recepcionista');
-            })
-            ->with('pessoaFisica')
+        $pessoas = Pessoa::whereHas('usuario', function ($query) {
+                        $query->where('papel', 'Recepcionista');
+                    })
+                    ->with('pessoaFisica')
+                    ->get();
         
-            ->get();
-        
+        $recepcionistas = [];
+
         foreach ($pessoas as $pessoa) {
             $recepcionistas[] = [
                 'id'    => $pessoa->id,
@@ -144,13 +145,6 @@ class RecepcionistaController extends Controller
         return to_route('recepcionista.index');
     }
 
-    // deletando dados
-    public function destroy(int $recepcionista){
-
-   
-        // return to_route('recepcionista.index')
-        //     ->with('mensagem.sucesso', "Recepcionista' {$recepcionista->nome} 'removida com sucesso");
-    }
 
     // formulário de edição
     public function edit(int $idPessoa){

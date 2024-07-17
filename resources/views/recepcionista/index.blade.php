@@ -59,7 +59,7 @@
                             </a>
                         </td>
                         <!-- <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
-                            <form action="{{ route('recepcionista.destroy', $recepcionista['id']) }}" method="post">
+                            <form action="{{ route('recepcionista.index', $recepcionista['id']) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="tag tag--icone tag--vermelho">

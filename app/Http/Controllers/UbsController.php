@@ -25,7 +25,7 @@ class UbsController extends Controller
         // Montando dados
         $ubs = [];
         $i = 0;
-
+        
         foreach ($pessoasJuridicas as $pessoaJuridica) {
 
             $ubs[$i] = [
@@ -43,8 +43,6 @@ class UbsController extends Controller
             }
             $i++;
         }
-
-        // Helper::pr($ubs);
 
         return view('ubs.index')
             ->with('ubs', $ubs)
