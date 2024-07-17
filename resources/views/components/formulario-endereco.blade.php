@@ -6,7 +6,11 @@
             <input type="text"
                     class="formulario__input"
                     name="logradouro"
-                    @isset($update) value="{{ $ubs['logradouro'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['logradouro'] }}"
+                    @else
+                        value="{{ old('logradouro') }}"
+                    @endif
                     id="logradouro">
         </div>
     </div>
@@ -17,7 +21,11 @@
             <input type="text"
                     class="formulario__input"
                     name="bairro"
-                    @isset($update) value="{{ $ubs['bairro'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['bairro'] }}"
+                    @else
+                        value="{{ old('bairro') }}"
+                    @endif
                     id="bairro">
         </div>
 
@@ -26,7 +34,11 @@
             <input type="number"
                     class="formulario__input"
                     name="numero"
-                    @isset($update) value="{{ $ubs['numero'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['numero'] }}"
+                    @else
+                        value="{{ old('numero') }}"
+                    @endif
                     id="numero">
         </div>
 
@@ -35,7 +47,11 @@
             <input type="text"
                     class="formulario__input"
                     name="cep"
-                    @isset($update) value="{{ $ubs['cep'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['cep'] }}"
+                    @else
+                        value="{{ old('cep') }}"
+                    @endif
                     id="cep"
                     maxlength="10">
         </div>
@@ -47,16 +63,24 @@
             <input type="text"
                     class="formulario__input"
                     name="cidade"
-                    @isset($update) value="{{ $ubs['cidade'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['cidade'] }}"
+                    @else
+                        value="{{ old('cidade') }}"
+                    @endif
                     id="cidade">
         </div>
 
         <div class="formulario__grupo">
             <label for="estado" class="formulario__label">Estado (Sigla)</label>
             <input type="text"
-                    class="formulario__input"
+                    class="formulario__input uppercase"
                     name="estado"
-                    @isset($update) value="{{ $ubs['estado'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['estado'] }}"
+                    @else
+                        value="{{ old('estado') }}"
+                    @endif
                     id="estado"
                     maxlength="2">
         </div>

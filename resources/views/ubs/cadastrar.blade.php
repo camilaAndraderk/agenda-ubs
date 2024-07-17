@@ -2,7 +2,7 @@
 
     <form action="{{ route('ubs.store') }}" class="formulario" method="post">
         @csrf
-
+        
         <x-formulario-pessoa-juridica>
         </x-formulario-pessoa-juridica>
 

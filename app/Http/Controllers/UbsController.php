@@ -10,13 +10,13 @@ use App\Models\PessoaJuridica;
 
 class UbsController extends Controller
 {
-    // unidades básicas de saúde
+    // exibindo unidades básicas de saúde
 
     public function index(){
 
         $pessoasJuridicas = PessoaJuridica::with('pessoa')->get();
         $ubs = [];
-        // Iterando sobre os resultados para exibir os dados
+        
         foreach ($pessoasJuridicas as $pessoaJuridica) {
             $ubs[] = [
                 'id'    => $pessoaJuridica->id,

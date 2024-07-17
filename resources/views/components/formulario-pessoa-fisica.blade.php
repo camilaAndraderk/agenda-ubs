@@ -6,7 +6,11 @@
             <input type="text"
                     class="formulario__input"
                     name="nome"
-                    @isset($update) value="{{ $ubs['nome'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['nome'] }}"
+                    @else
+                        value="{{ old('nome') }}"
+                    @endif
                     id="nome">
         </div>
     </div>
@@ -17,7 +21,11 @@
             <input type="text"
                     class="formulario__input"
                     name="nascimento"
-                    @isset($update) value="{{ $ubs['nascimento'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['nascimento'] }}"
+                    @else
+                        value="{{ old('nascimento') }}"
+                    @endif
                     id="nascimento">
         </div>
 
@@ -26,7 +34,11 @@
             <input type="text"
                     class="formulario__input"
                     name="cpf"
-                    @isset($update) value="{{ $ubs['cpf'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['cpf'] }}"
+                    @else
+                        value="{{ old('cpf') }}"
+                    @endif
                     id="cpf"
                     maxlength="11">
         </div>

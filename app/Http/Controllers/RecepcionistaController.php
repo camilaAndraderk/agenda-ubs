@@ -41,26 +41,35 @@ class RecepcionistaController extends Controller
     // formulário de criação
     public function create(){
             
-        
+        $pessoasJuridicas = PessoaJuridica::with('pessoa')->get();
+        $ubs = [];
 
-        return view('recepcionista.cadastrar');
+        foreach ($pessoasJuridicas as $pessoaJuridica) {
+            $ubs[] = [
+                'id'    => $pessoaJuridica->id,
+                'nome'  => $pessoaJuridica->pessoa->nome,
+                'cnpj'  => $pessoaJuridica->cnpj
+            ];
+        }
+
+        return view('recepcionista.cadastrar', compact(['ubs']));
     }
 
     // salvando dados
     public function store(RecepcionistaFormRequest $request){
     
-
+        Helper::pr($request);
         
-        return to_route('recepcionistas.index')
-            ->with('mensagem.sucesso', "Recepcionista '{$recepcionista->nome}' cadastrada com sucesso"); // flash messege
+        // return to_route('recepcionista.index')
+        //     ->with('mensagem.sucesso', "Recepcionista '{$recepcionista->nome}' cadastrada com sucesso"); // flash messege
     }
 
     // deletando dados
     public function destroy(int $recepcionista){
 
    
-        return to_route('recepcionistas.index')
-            ->with('mensagem.sucesso', "Recepcionista' {$recepcionista->nome} 'removida com sucesso");
+        // return to_route('recepcionista.index')
+        //     ->with('mensagem.sucesso', "Recepcionista' {$recepcionista->nome} 'removida com sucesso");
     }
 
     // formulário de edição
@@ -74,8 +83,8 @@ class RecepcionistaController extends Controller
     public function update(RecepcionistaFormRequest $recepcionista, Request $request){
 
 
-        return to_route( 'recepcionista.index')
-            ->with('mensagem.sucesso', "Recepcionista ' {$recepcionista->nome} ' editada com sucesso.");
+        // return to_route( 'recepcionista.index')
+        //     ->with('mensagem.sucesso', "Recepcionista ' {$recepcionista->nome} ' editada com sucesso.");
     }
 
     // mostrando detalhes

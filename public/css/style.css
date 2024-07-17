@@ -62,6 +62,10 @@ a:hover{
     text-decoration: underline;
 }
 
+.uppercase{
+    text-transform: uppercase;
+}
+
 @keyframes fade-in {
     0%{
         opacity: 0;

@@ -6,7 +6,11 @@
             <input type="text"
                     class="formulario__input"
                     name="nome"
-                    @isset($update) value="{{ $ubs['nome'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['nome'] }}"
+                    @else
+                        value="{{ old('nome') }}"
+                    @endif
                     id="nome">
         </div>
 
@@ -14,7 +18,11 @@
             <label for="razao_social" class="formulario__label">Razão Social</label>
             <input type="text"
                     class="formulario__input"
-                    @isset($update) value="{{ $ubs['razao_social'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['razao_social'] }}"
+                    @else
+                        value="{{ old('razao_social') }}"
+                    @endif
                     name="razao_social"
                     id="razao_social">
         </div>
@@ -26,17 +34,40 @@
             <input type="text"
                     class="formulario__input"
                     name="cnpj"
-                    @isset($update) value="{{ $ubs['cnpj'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['cnpj'] }}"
+                    @else
+                        value="{{ old('cnpj') }}"
+                    @endif
                     id="cnpj"
                     maxlength="14">
         </div>
 
         <div class="formulario__grupo">
             <label for="situacao" class="formulario__label">Situação</label>
-            <!--  @isset($update) value="{{ $ubs['situacao'] }}" @endisset -->
+    
             <select class="formulario__seletor" name="situacao" id="situacao">
-                <option value="Ativa">Ativa</option>
-                <option value="Inativa">Inativa</option>
+                <option 
+                    value="Ativa" 
+                    @if (isset($update))
+                        {{ 'Ativa' == $ubs['situacao'] ? 'selected' : '' }}
+                    @else
+                        {{ "Ativa" == old('situacao') ? 'selected' : '' }}
+                    @endif
+                >                    
+                    Ativa
+                </option>
+                
+                <option
+                    value="Inativa" 
+                    @if (isset($update))
+                        {{ "Inativa" == $ubs['situacao'] ? 'selected' : '' }}
+                    @else
+                        {{ "Inativa" == old('situacao') ? 'selected' : '' }}
+                    @endif
+                >
+                    Inativa
+                </option>
             </select>
         </div>
     </div>

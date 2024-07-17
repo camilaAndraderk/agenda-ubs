@@ -23,8 +23,9 @@ class RecepcionistaFormRequest extends FormRequest
     {
         return [
             'nome'          => ['required', 'min:4'],
-            'nascimento'    => ['required', 'date'],
-            'cpf'           => ['required', 'size:11']
+            'nascimento'    => ['required'],
+            'cpf'           => ['required', 'size:11'],
+            'ubs'           => ['required']
         ];
     }
 }

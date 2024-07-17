@@ -6,7 +6,12 @@
             <input type="email"
                     class="formulario__input"
                     name="email"
-                    @isset($update) value="{{ $ubs['email'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['email'] }}"
+                    @else
+                        value="{{ old('email') }}"
+                    @endif
+                    
                     id="email">
         </div>
 
@@ -15,7 +20,12 @@
             <input type="text"
                     class="formulario__input"
                     name="telefone"
-                    @isset($update) value="{{ $ubs['telefone'] }}" @endisset
+                    @if (isset($update))
+                        value="{{ $ubs['telefone'] }}"
+                    @else
+                        value="{{ old('telefone') }}"
+                    @endif
+                    
                     id="telefone"
                     maxlength="15">
         </div>

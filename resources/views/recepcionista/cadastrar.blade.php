@@ -1,5 +1,5 @@
 <x-layout title="Cadastrar Recepcionistas">
-    <form action="recepcionistas.store" class="formulario" method="post">
+    <form action="{{ route('recepcionista.store') }}" class="formulario" method="post">
         @csrf 
         
         <x-formulario-pessoa-fisica>
@@ -9,11 +9,16 @@
 
         <div class="formulario__linha">
             <div class="formulario__grupo">
-                <label for="situacao" class="formulario__label">Unidade Básica de Saúde*</label>
-                <select class="formulario__seletor" name="situacao" id="situacao">
-                    <option value="">Selecione</option>
-                    <option value="1">Posto 1</option>
-                    <option value="2">Posto 2</option>
+                <label for="ubs" class="formulario__label">Unidade Básica de Saúde*</label>
+                <select class="formulario__seletor" name="ubs" id="ubs">
+                    <option value="">Selecione</option>                   
+                    @foreach($ubs as $cadaUbs)
+                        <option
+                            :value="$cadaUbs['id']"
+                        >
+                            {{ $cadaUbs['nome'] }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
         </div>
