@@ -19,7 +19,7 @@ class PessoaFisica extends Model
 
 
     // Busca dados das tabelas de pessoa, pessoa física, usuário e ubs que o usuário está relacionado
-
+    // Deve ter um usuário
     public static function buscaDadosCompletosPessoaFisica($idPessoa){
 
         $dados = DB::select("

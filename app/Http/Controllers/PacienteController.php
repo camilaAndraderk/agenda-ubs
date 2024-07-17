@@ -7,36 +7,28 @@ use App\Http\Requests\PacienteFormRequest;
 use App\Models\Paciente;
 use App\Models\Pessoa;
 use App\Models\PessoaFisica;
+use Carbon\Carbon;
 use GMP;
 use Illuminate\Http\Request;
+use PHPUnit\TextUI\Help;
 
 class PacienteController extends Controller
 {
       // exibindo dados
-      public function index(Request $request){
+    public function index(Request $request){
         
         $mensagemSucesso    = $request->session()->get('mensagem.sucesso');
         $mensagemErro       = $request->session()->get('mensagem.erro');
-
-        // $pessoas = Pessoa::whereHas('paciente', function ($query) {
-        //                 $query->where('id');
-        //             })
-        //             ->with('pessoaFisica')
-        //             ->get();
         
-        // $pessoas = Pessoa::with('pessoaFisica')->with('paciente')->get();
+        $pacientesObj   = Paciente::with('pessoa.pessoaFisica')->get();        
+        $pacientes      = [];
         
-        $pessoas = Paciente::with('pessoa.pessoaFisica')->get();
-
-        // Helper::pr($pacientes);
-
-        $pacientes = [];
-
-        foreach ($pessoas as $pessoa) {
+        foreach ($pacientesObj as $cadapPacienteObj) {
+            
             $pacientes[] = [
-                'id'    => $pessoa->id,
-                'nome'  => $pessoa->nome,
-                'cpf'  =>  $pessoa->pessoaFisica->cpf
+                'id'    => $cadapPacienteObj->id_pessoa,
+                'nome'  => $cadapPacienteObj->pessoa->nome,
+                'cpf'  =>  $cadapPacienteObj->pessoa->pessoaFisica->cpf,
             ];
         }
 
@@ -107,13 +99,61 @@ class PacienteController extends Controller
                 ];
                 
                 $paciente = Paciente::create($dadosPaciente);
-
-                Helper::pr($paciente);
             }
 
         }
         
         return to_route('paciente.index');
+    }
+
+    // mostrando detalhes
+    public function show(int $idPessoa){
+           
+        $dados = Paciente::buscaDadosCompletosPaciente($idPessoa);
+
+        $dataNascimento = Carbon::parse($dados->nascimento)->format('d/m/Y');
+        
+        $paciente['nome']['label']          = 'Nome';
+        $paciente['nome']['valor']          = (empty($dados->nome)                  ? '-' : $dados->nome);
+
+        $paciente['cpf']['label']           = 'cpf';
+        $paciente['cpf']['valor']           = (empty($dados->cpf)                   ? '-' : $dados->cpf);
+
+        $paciente['nascimento']['label']    = 'Data de Nascimento';
+        $paciente['nascimento']['valor']    = (empty($dataNascimento)               ? '-' : $dataNascimento);
+
+        $paciente['email']['label']         = 'E-mail';
+        $paciente['email']['valor']         = (empty($dados->email)                 ? '-' : $dados->email);
+
+        $paciente['telefone']['label']      = 'Telefone';
+        $paciente['telefone']['valor']      = (empty($dados->telefone)              ? '-' : $dados->telefone);
+
+        $paciente['logradouro']['label']    = 'Logradouro';
+        $paciente['logradouro']['valor']    = (empty($dados->logradouro)            ? '-' : $dados->logradouro);
+
+        $paciente['bairro']['label']        = 'Bairro';
+        $paciente['bairro']['valor']        = (empty($dados->bairro)                ? '-' : $dados->bairro);
+
+        $paciente['numero']['label']        = 'Número';
+        $paciente['numero']['valor']        = (empty($dados->numero)                ? '-' : $dados->numero);
+
+        $paciente['cep']['label']           = 'CEP';
+        $paciente['cep']['valor']           = (empty($dados->cep)                   ? '-' : $dados->cep);
+
+        $paciente['cidade']['label']        = 'Cidade';
+        $paciente['cidade']['valor']        = (empty($dados->cidade)                ? '-' : $dados->cidade);
+
+        $paciente['estado']['label']        = 'Estado';
+        $paciente['estado']['valor']        = (empty($dados->estado)                ? '-' : $dados->estado);
+
+        $paciente['comorbidades']['label']  = 'Comorbidades';
+        $paciente['comorbidades']['valor']  = (empty($dados->comorbidades)          ? '-' : $dados->comorbidades);
+
+        $paciente['observacao']['label']    = 'Observação';
+        $paciente['observacao']['valor']    = (empty($dados->observacao_paciente)   ? '-' : $dados->observacao_paciente);
+
+        return view('paciente.detalhes', compact(['paciente']));
+            
     }
 
 }
