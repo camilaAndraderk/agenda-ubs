@@ -18,7 +18,7 @@
     <div class="formulario__linha">
         <div class="formulario__grupo">
             <label for="nascimento" class="formulario__label">Data de nascimento*</label>
-            <input type="text"
+            <input type="date"
                     class="formulario__input"
                     name="nascimento"
                     @if (isset($update))

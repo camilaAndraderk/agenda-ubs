@@ -1,0 +1,14 @@
+<x-layout title="Informações da Recepcionista">
+    
+    <div class="detalhes">
+        <ul class="detalhes__lista">
+            @foreach ($recepcionista as $informacao)
+                <li class="detalhes__item">
+                    <span class="detalhes__label"> {{ $informacao['label'] }}: </span>
+                    <span class="detalhes__valor"> {{ $informacao['valor'] }} </span>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+    <a href="{{ url()->previous() }}" class="botao">Voltar</a>
+</x-layout>

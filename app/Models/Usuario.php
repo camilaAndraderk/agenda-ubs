@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Usuario extends Model
 {
     use HasFactory;
-    protected $with = ['papel', 'pessoa'];
-    protected $fillable = ['usuario', 'senha'];
+
+    protected $fillable = ['usuario', 'senha', 'papel', 'id_pessoa'];
+    protected $table    = 'usuarios';
 
     public function pessoa()
     {

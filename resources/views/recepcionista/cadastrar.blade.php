@@ -14,7 +14,7 @@
                     <option value="">Selecione</option>                   
                     @foreach($ubs as $cadaUbs)
                         <option
-                            :value="$cadaUbs['id']"
+                            value="{{ $cadaUbs['id'] }}"
                         >
                             {{ $cadaUbs['nome'] }}
                         </option>

@@ -7,14 +7,20 @@
             {{ $mensagemSucesso }}
         </div>
     @endisset
+    
+    @isset($mensagemErro)
+        <div class="aviso aviso--vermelho">
+            {{ $mensagemErro }}
+        </div>
+    @endisset
 
-    <button class="botao"><a href="{{ route('recepcionista.create') }}">Cadastrar</a></button>
+   <a class="botao" href="{{ route('recepcionista.create') }}">Cadastrar</a>
     
     <table class="tabela">
         <thead class="tabela__cabecalho">
             <tr class="tabela__cabecalho__linha">
                 <th class="tabela__cabecalho__coluna">
-                    Nome Fantasia
+                    Nome
                 </th>
                 <th class="tabela__cabecalho__coluna">
                     CPF
@@ -41,19 +47,19 @@
                             {{ $recepcionista['cpf'] }}
                         </td>
                         <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
-                            <a href="{{ route('ubs.show', $recepcionista['id']) }}">
+                            <a href="{{ route('recepcionista.show', $recepcionista['id']) }}">
                                 <span class="tag tag--icone tag--azul">
                                 <i class="fa-solid fa-info"></i>
                                 </span>
                             </a>
                         </td>
                         <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
-                            <a href="{{ route('ubs.edit', $recepcionista['id']) }}" class="tag tag--icone tag--verde-agua">
+                            <a href="{{ route('recepcionista.edit', $recepcionista['id']) }}" class="tag tag--icone tag--verde-agua">
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
                         </td>
                         <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
-                            <form action="{{ route('ubs.destroy', $recepcionista['id']) }}" method="post">
+                            <form action="{{ route('recepcionista.destroy', $recepcionista['id']) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="tag tag--icone tag--vermelho">

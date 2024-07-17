@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PessoaFisica extends Model
 {
     use HasFactory;
-    protected $fillable = ['cpf', 'nascimento'];
+    protected $fillable = ['cpf', 'nascimento', 'id_pessoa'];
+    protected $table   = 'pessoas_fisicas';
 
     public function pessoa()
     {

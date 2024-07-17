@@ -12,7 +12,10 @@ class UbsController extends Controller
 {
     // exibindo unidades básicas de saúde
 
-    public function index(){
+    public function index(Request $request){
+
+        $mensagemSucesso    = $request->session()->get('mensagem.sucesso');
+        $mensagemErro       = $request->session()->get('mensagem.erro');
 
         $pessoasJuridicas = PessoaJuridica::with('pessoa')->get();
         $ubs = [];
@@ -25,7 +28,10 @@ class UbsController extends Controller
             ];
         }
 
-        return view('ubs.index', compact(['ubs']));
+        return view('ubs.index')
+            ->with('ubs', $ubs)
+            ->with('mensagemSucesso', $mensagemSucesso)
+            ->with('mensagemErro', $mensagemErro);
        
     }
 
@@ -66,22 +72,24 @@ class UbsController extends Controller
                 'id_pessoa'      => $pessoa->id
             ];
 
-            PessoaJuridica::create($pessoaJuridicaDados);
+            if(PessoaJuridica::create($pessoaJuridicaDados)){
+                $request->session()->flash('mensagem.sucesso', "Unidade Básica '{$pessoa->nome}' cadastrada com sucesso"); 
+            }
         }
 
-        return to_route('ubs.index')
-            ->with('mensagem.sucesso', "Unidade Básica '{$pessoa->nome}' cadastrada com sucesso");
+        return to_route('ubs.index');
     }
 
 
     // deletar
-    public function destroy(int $idPessoaJuridica){
+    public function destroy(int $idPessoaJuridica, Request $request){
         
         // Deletando pessoa jurídica e pessoa
         PessoaJuridica::deletar($idPessoaJuridica);
 
-        return to_route('ubs.index')
-            ->with('mensagem.sucesso', "Unidade Básica excluída com sucesso");
+        $request->session()->flash('mensagem.sucesso', "Unidade Básica excluída com sucesso");
+
+        return to_route('ubs.index');
 
     }
 
@@ -107,7 +115,6 @@ class UbsController extends Controller
             'telefone'      => $pessoaJuridica->pessoa->telefone
         ];
         
-        // Helper::pr($ubs);
         return view('ubs.editar', compact(['ubs']));
     }
 
@@ -148,10 +155,11 @@ class UbsController extends Controller
 
             $pessoaJuridica->fill($pessoaJuridicaDados);
             $pessoaJuridica->save();
+
+            $request->session()->flash('mensagem.sucesso', "Unidade Básica '{$pessoa->nome}' editada com sucesso");
         }
 
-        return to_route('ubs.index')
-            ->with('mensagem.sucesso', "Unidade Básica '{$pessoa->nome}' editada com sucesso");
+        return to_route('ubs.index');
     }
 
     // mostrando detalhes

@@ -23,4 +23,10 @@ class Pessoa extends Model
     {
         return $this->hasOne(Usuario::class, 'id_pessoa', 'id');
     }
+
+    public static function limpaStringNumerica($valor){
+
+        $valor = preg_replace( array( '/[ ]/' , '/[^0-9]/' ) , array( '' , '' ) , $valor);
+        return $valor;
+    }
 }

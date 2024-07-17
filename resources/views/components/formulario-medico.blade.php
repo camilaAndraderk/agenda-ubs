@@ -33,8 +33,8 @@
                         
                     </td>
                     <td class="tabela__corpo__coluna">
-                        {{ $cadaUbs['cpf'] }}
-                        <input type="checkbox" name="ubs[]" id="ubs_{{ $cadaUbs['id'] }}" :value="$cadaUbs['id']">
+                        {{ $cadaUbs['cnpj'] }}
+                        <input type="checkbox" name="ubs[]" id="ubs_{{ $cadaUbs['id'] }}" value="{{ $cadaUbs['id'] }}">
                     </td>                    
                 </tr>
             @endforeach

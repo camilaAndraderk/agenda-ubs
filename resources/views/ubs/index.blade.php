@@ -7,8 +7,14 @@
             {{ $mensagemSucesso }}
         </div>
     @endisset
+    
+    @isset($mensagemErro)
+        <div class="aviso aviso--vermelho">
+            {{ $mensagemErro }}
+        </div>
+    @endisset
 
-    <button class="botao"><a href="{{ route('ubs.create') }}">Cadastrar</a></button>
+    <a class="botao" href="{{ route('ubs.create') }}">Cadastrar</a>
     
     <table class="tabela">
         <thead class="tabela__cabecalho">
