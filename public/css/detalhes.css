@@ -2,6 +2,10 @@
     width: 100%;
 }
 
+.detalhes__lista{
+    margin-bottom: 3em;
+}
+
 .detalhes__item{
     margin-bottom: 1em;
 }

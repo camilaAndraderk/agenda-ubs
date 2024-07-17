@@ -31,6 +31,26 @@
     cursor: pointer;
 }
 
+.formulario__texto-destaque{
+    font-weight: 600;
+    margin-bottom: 1.5em;
+    display: block;
+}
+
+.formulario__grupo-checkbox{
+    display: flex;
+    align-items: flex-start;
+    row-gap: 4.5em;
+    row-gap: 1em;
+    flex-direction: column;
+}
+
+.formulario__linha-checkbox{
+    display: flex;
+    align-items: center;
+    column-gap: .5em;
+}
+
 .formulario__input,
 .formulario__seletor{
     width: 100%;
