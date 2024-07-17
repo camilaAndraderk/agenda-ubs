@@ -20,6 +20,7 @@
 
 .tabela__corpo__coluna{
     padding: .7em .5em;
+    text-align: center;
 }
 
 .tabela__corpo__coluna--icone{

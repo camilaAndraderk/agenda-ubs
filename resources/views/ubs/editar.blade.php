@@ -3,17 +3,17 @@
         @csrf
         @method('PUT')
         
-        <x-formulario-pessoa-juridica :update="true" :ubs="$ubs">
+        <x-formulario-pessoa-juridica :update="true" :dados="$ubs">
         </x-formulario-pessoa-juridica>
 
         <hr class="formulario__divisor">
 
-        <x-formulario-endereco :update="true" :ubs="$ubs">
+        <x-formulario-endereco :update="true" :dados="$ubs">
         </x-formulario-endereco>
 
         <hr class="formulario__divisor">
 
-        <x-formulario-contato :update="true" :ubs="$ubs">
+        <x-formulario-contato :update="true" :dados="$ubs">
         </x-formulario-contato>
 
         <x-formulario-botoes>

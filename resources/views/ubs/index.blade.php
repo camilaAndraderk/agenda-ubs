@@ -26,6 +26,9 @@
                     CNPJ
                 </th>
                 <th class="tabela__cabecalho__coluna">
+                    Situação
+                </th>
+                <th class="tabela__cabecalho__coluna">
                     Ver +
                 </th>
                 <th class="tabela__cabecalho__coluna">
@@ -45,6 +48,9 @@
                         </td>
                         <td class="tabela__corpo__coluna">
                             {{ $cadaUbs['cnpj'] }}
+                        </td>
+                        <td class="tabela__corpo__coluna">
+                            {{ $cadaUbs['situacao'] }}
                         </td>
                         <td class="tabela__corpo__coluna tabela__corpo__coluna--icone">
                             <a href="{{ route('ubs.show', $cadaUbs['id']) }}">
@@ -72,7 +78,7 @@
                 @endforeach
             @else
                 <tr class="tabela__corpo__linha">
-                    <td class="tabela__corpo__coluna tabela__corpo__coluna--icone" colspan="5">
+                    <td class="tabela__corpo__coluna tabela__corpo__coluna--icone" colspan="6">
                         Não existem unidades básicas de saúde cadastradas
                     </td>            
                 </tr>

@@ -7,7 +7,7 @@
                     class="formulario__input"
                     name="nome"
                     @if (isset($update))
-                        value="{{ $ubs['nome'] }}"
+                        value="{{ $dados['nome'] }}"
                     @else
                         value="{{ old('nome') }}"
                     @endif
@@ -19,7 +19,7 @@
             <input type="text"
                     class="formulario__input"
                     @if (isset($update))
-                        value="{{ $ubs['razao_social'] }}"
+                        value="{{ $dados['razao_social'] }}"
                     @else
                         value="{{ old('razao_social') }}"
                     @endif
@@ -35,7 +35,7 @@
                     class="formulario__input"
                     name="cnpj"
                     @if (isset($update))
-                        value="{{ $ubs['cnpj'] }}"
+                        value="{{ $dados['cnpj'] }}"
                     @else
                         value="{{ old('cnpj') }}"
                     @endif
@@ -50,7 +50,7 @@
                 <option 
                     value="Ativa" 
                     @if (isset($update))
-                        {{ 'Ativa' == $ubs['situacao'] ? 'selected' : '' }}
+                        {{ 'Ativa' == $dados['situacao'] ? 'selected' : '' }}
                     @else
                         {{ "Ativa" == old('situacao') ? 'selected' : '' }}
                     @endif
@@ -61,7 +61,7 @@
                 <option
                     value="Inativa" 
                     @if (isset($update))
-                        {{ "Inativa" == $ubs['situacao'] ? 'selected' : '' }}
+                        {{ "Inativa" == $dados['situacao'] ? 'selected' : '' }}
                     @else
                         {{ "Inativa" == old('situacao') ? 'selected' : '' }}
                     @endif

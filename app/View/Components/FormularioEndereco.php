@@ -12,7 +12,7 @@ class FormularioEndereco extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public $ubs = null,
+        public $dados = null,
         public $update = null
     )
     {

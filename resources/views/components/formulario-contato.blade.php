@@ -7,7 +7,7 @@
                     class="formulario__input"
                     name="email"
                     @if (isset($update))
-                        value="{{ $ubs['email'] }}"
+                        value="{{ $dados['email'] }}"
                     @else
                         value="{{ old('email') }}"
                     @endif
@@ -21,7 +21,7 @@
                     class="formulario__input"
                     name="telefone"
                     @if (isset($update))
-                        value="{{ $ubs['telefone'] }}"
+                        value="{{ $dados['telefone'] }}"
                     @else
                         value="{{ old('telefone') }}"
                     @endif

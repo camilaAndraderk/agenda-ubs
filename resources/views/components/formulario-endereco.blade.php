@@ -7,7 +7,7 @@
                     class="formulario__input"
                     name="logradouro"
                     @if (isset($update))
-                        value="{{ $ubs['logradouro'] }}"
+                        value="{{ $dados['logradouro'] }}"
                     @else
                         value="{{ old('logradouro') }}"
                     @endif
@@ -22,7 +22,7 @@
                     class="formulario__input"
                     name="bairro"
                     @if (isset($update))
-                        value="{{ $ubs['bairro'] }}"
+                        value="{{ $dados['bairro'] }}"
                     @else
                         value="{{ old('bairro') }}"
                     @endif
@@ -35,7 +35,7 @@
                     class="formulario__input"
                     name="numero"
                     @if (isset($update))
-                        value="{{ $ubs['numero'] }}"
+                        value="{{ $dados['numero'] }}"
                     @else
                         value="{{ old('numero') }}"
                     @endif
@@ -48,7 +48,7 @@
                     class="formulario__input"
                     name="cep"
                     @if (isset($update))
-                        value="{{ $ubs['cep'] }}"
+                        value="{{ $dados['cep'] }}"
                     @else
                         value="{{ old('cep') }}"
                     @endif
@@ -64,7 +64,7 @@
                     class="formulario__input"
                     name="cidade"
                     @if (isset($update))
-                        value="{{ $ubs['cidade'] }}"
+                        value="{{ $dados['cidade'] }}"
                     @else
                         value="{{ old('cidade') }}"
                     @endif
@@ -77,7 +77,7 @@
                     class="formulario__input uppercase"
                     name="estado"
                     @if (isset($update))
-                        value="{{ $ubs['estado'] }}"
+                        value="{{ $dados['estado'] }}"
                     @else
                         value="{{ old('estado') }}"
                     @endif

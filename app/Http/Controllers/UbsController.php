@@ -22,9 +22,10 @@ class UbsController extends Controller
         
         foreach ($pessoasJuridicas as $pessoaJuridica) {
             $ubs[] = [
-                'id'    => $pessoaJuridica->id,
-                'nome'  => $pessoaJuridica->pessoa->nome,
-                'cnpj'  => $pessoaJuridica->cnpj
+                'id'        => $pessoaJuridica->id,
+                'nome'      => $pessoaJuridica->pessoa->nome,
+                'cnpj'      => $pessoaJuridica->cnpj,
+                'situacao'  => $pessoaJuridica->situacao
             ];
         }
 
