@@ -6,14 +6,16 @@ use Closure;
 use Illuminate\View\View;
 use Illuminate\View\Component;
 
-class FormularioConsulta extends Component
+class Calendario extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public $dados   = null,
-        public $update  = null
+        public $inicioDoMes   = null,
+        public $mesAtual    = null,
+        public $anoAtual    = null,
+        public $consultas  = null
 
     )
     {
@@ -25,6 +27,8 @@ class FormularioConsulta extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.formulario-contato');
+        return view('components.calendario');
     }
+
+	
 }
