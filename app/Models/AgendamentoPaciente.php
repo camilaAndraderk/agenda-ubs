@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-
+use PHPUnit\TextUI\Help;
 
 class AgendamentoPaciente extends Model
 {
@@ -66,25 +66,54 @@ class AgendamentoPaciente extends Model
                 ",
             [$idMedico, $mesAno]
         );
+
         $consultas = array();
+
         foreach($dados as $cadaConsulta){
           
-            
-            $data = explode(' ',$cadaConsulta->data);
+            $data = explode(' ', $cadaConsulta->data);
             $data = $data[0];
-          
 
             $consultas[$data][] = $cadaConsulta->id_consulta;
         }
 
-
-
-
-
-
-
-
         return $consultas;
+    }
+
+    public static function consultas(){
+
+        $dados = DB::select("
+            SELECT
+                ap.id as id_consulta,
+                paciente.nome as nome_paciente,
+                medico.nome as nome_medico,
+                ubs.nome as nome_ubs,
+                ap.data,
+                ap.situacao_consulta,
+                ap.categoria_paciente,
+                ap.avaliacao_medica
+            FROM
+                agendamento_pacientes ap
+            INNER JOIN
+                pessoas paciente
+                ON
+                paciente.id = ap.id_paciente
+            INNER JOIN
+                pessoas medico
+                ON
+                medico.id = ap.id_medico
+            INNER JOIN
+                pessoas_juridicas pj
+                ON
+                ap.id_ubs = pj.id
+            INNER JOIN
+                pessoas ubs
+                ON
+                ubs.id = pj.id_pessoa
+                "
+        );
+
+        return $dados;
     }
 
 }
