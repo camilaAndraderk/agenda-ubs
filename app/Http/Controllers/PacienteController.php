@@ -189,7 +189,6 @@ class PacienteController extends Controller
         $pessoa = Pessoa::query()
                     ->where('id', $idPessoa)
                     ->first();
-
                     
         $pessoaDados = [
             'nome'       => $request->nome,
@@ -225,31 +224,20 @@ class PacienteController extends Controller
             if($pessoaFisica){
 
                 // Informações de paciente
-
-                $dadosPaciente = [
-                    'comorbidades'  => $request->comorbidades,
-                    'observacao'    => $request->observacao,
-                    'id_pessoa'     => $pessoa->id,
-                ];
-                
-                Paciente::create($dadosPaciente);
-
-
-                // Editando ubs que o usuário possui acesso
-                $usuario = Usuario::where('id_pessoa', $pessoa->id)
+                $paciente = Paciente::where('id_pessoa', $pessoa->id)
                             ->first();
-
-                $usuarioUbs = UsuarioUbs::where('id_usuario', $usuario->id)
-                                ->first();
-                $dadosUsuarioUbs = [
-                    'id_ubs' => $request->ubs
+                
+                $pacienteDados = [
+                    'comorbidades'  => trim($request->comorbidades),
+                    'observacao'    => trim($request->observacao),
                 ];
 
-                $usuarioUbs->fill($dadosUsuarioUbs);
-                $usuarioUbs->save();
+                $paciente->fill($pacienteDados);
+                $paciente->save();
+
+                $request->session()->flash('mensagem.sucesso', "Paciente '{$pessoa->nome}' editado com sucesso");
             }
 
-            $request->session()->flash('mensagem.sucesso', "Recepcionista '{$pessoa->nome}' editada com sucesso");
         }
 
         return to_route( 'paciente.index');
