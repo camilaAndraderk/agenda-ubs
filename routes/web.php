@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgendamentoPacienteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
@@ -63,4 +64,15 @@ Route::controller(PacienteController::class)->group(function(){
     Route::get('/paciente/{paciente}/editar',       'edit')    ->name('paciente.edit');
     Route::put('/paciente/{paciente}',              'update')  ->name('paciente.update');
     Route::get('/paciente/{paciente}',              'show')    ->name('paciente.show');
+});
+
+Route::controller(AgendamentoPacienteController::class)->group(function(){
+
+    Route::get('/agendamento_paciente',                       'index')   ->name('agendamento_paciente.index');
+    Route::get('/agendamento_paciente/cadastrar',             'create')  ->name('agendamento_paciente.create');
+    Route::post('/agendamento_paciente/salvar',               'store')   ->name('agendamento_paciente.store');
+    // Route::delete('/agendamento_paciente/deletar/{agendamento_paciente}',   'destroy') ->name('agendamento_paciente.destroy');
+    Route::get('/agendamento_paciente/{agendamento_paciente}/editar',       'edit')    ->name('agendamento_paciente.edit');
+    Route::put('/agendamento_paciente/{agendamento_paciente}',              'update')  ->name('agendamento_paciente.update');
+    Route::get('/agendamento_paciente/{agendamento_paciente}',              'show')    ->name('agendamento_paciente.show');
 });
