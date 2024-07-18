@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Helper;
 use App\Http\Requests\MedicoFormRequest;
 use App\Http\Requests\MedicoAtualizarFormRequest;
+use App\Models\AgendamentoPaciente;
 use App\Models\Pessoa;
 use App\Models\PessoaFisica;
 use App\Models\PessoaJuridica;
@@ -193,7 +194,17 @@ class MedicoController extends Controller
         $medico['estado']['label']        = 'Estado';
         $medico['estado']['valor']        = (empty($dados->estado)        ? '-' : $dados->estado);
 
-        return view('medico.detalhes', compact(['medico', 'ubs']));
+
+        $mesAtual = date('m');
+        $anoAtual = date('Y');
+
+        $inicioDoMes = AgendamentoPaciente::inicioDoMes($mesAtual, $anoAtual);
+
+        $consultas = AgendamentoPaciente::consultasDoMes($mesAtual, $anoAtual, $idPessoa);
+        
+
+
+        return view('medico.detalhes', compact(['medico', 'ubs', 'inicioDoMes', 'mesAtual', 'anoAtual', 'consultas']));
         
     }
 

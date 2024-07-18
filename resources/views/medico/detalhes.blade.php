@@ -18,5 +18,11 @@
             @endforeach
         </ul>
     </div>
+
+    <x-calendario :inicioDoMes="$inicioDoMes" :mesAtual="$mesAtual" :anoAtual="$anoAtual" :consultas="$consultas">
+    </x-calendario>
+
+
+
     <a href="{{ url()->previous() }}" class="botao">Voltar</a>
 </x-layout>

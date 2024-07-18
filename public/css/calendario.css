@@ -1,0 +1,24 @@
+.itemDia{
+    border: 1px solid red;
+    width: 50px;
+    height: 50px;
+    float: left;
+    text-align: center;
+  }
+  .diaOutroMes{
+    border: 1px solid gray;
+    width: 50px;
+    height: 50px;
+    float: left;
+    text-align: center;
+  }
+  .hoje{
+    border: 1px solid green;
+    background-color: lightblue;
+  }
+
+  .diaComEvento{
+    border: 1px solid green;
+    background-color: pink;
+    cursor: pointer;
+  }
