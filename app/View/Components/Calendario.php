@@ -12,10 +12,11 @@ class Calendario extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public $inicioDoMes   = null,
-        public $mesAtual    = null,
-        public $anoAtual    = null,
-        public $consultas  = null
+        public $inicioDoMes     = null,
+        public $mesAtual        = null,
+        public $anoAtual        = null,
+        public $consultas       = null,
+        public $totalDiasMes    = null
 
     )
     {

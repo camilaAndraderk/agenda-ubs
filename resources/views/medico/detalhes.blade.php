@@ -19,7 +19,7 @@
         </ul>
     </div>
 
-    <x-calendario :inicioDoMes="$inicioDoMes" :mesAtual="$mesAtual" :anoAtual="$anoAtual" :consultas="$consultas">
+    <x-calendario :inicioDoMes="$inicioDoMes" :mesAtual="$mesAtual" :anoAtual="$anoAtual" :consultas="$consultas" :totalDiasMes="$totalDiasMes">
     </x-calendario>
 
 

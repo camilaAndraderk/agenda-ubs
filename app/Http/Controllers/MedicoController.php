@@ -157,7 +157,6 @@ class MedicoController extends Controller
 
         $ubs = PessoaJuridica::ubsDeUmaPessoa($idPessoa);
 
-        // Helper::pr($ubs[0]->nome_ubs);
 
         $dataNascimento = Carbon::parse($dados->nascimento)->format('d/m/Y');
         
@@ -198,13 +197,14 @@ class MedicoController extends Controller
         $mesAtual = date('m');
         $anoAtual = date('Y');
 
-        $inicioDoMes = AgendamentoPaciente::inicioDoMes($mesAtual, $anoAtual);
+        $inicioDoMes  = AgendamentoPaciente::inicioDoMes($mesAtual, $anoAtual);
+        $totalDiasMes = cal_days_in_month(CAL_GREGORIAN, $mesAtual, $anoAtual);
 
         $consultas = AgendamentoPaciente::consultasDoMes($mesAtual, $anoAtual, $idPessoa);
         
 
 
-        return view('medico.detalhes', compact(['medico', 'ubs', 'inicioDoMes', 'mesAtual', 'anoAtual', 'consultas']));
+        return view('medico.detalhes', compact(['medico', 'ubs', 'inicioDoMes', 'mesAtual', 'anoAtual', 'consultas', 'totalDiasMes']));
         
     }
 

@@ -44,16 +44,25 @@ class AgendamentoPaciente extends Model
             FROM
                 agendamento_pacientes ap
             INNER JOIN
-                pessoas paciente ON paciente.id = ap.id_paciente
+                pessoas paciente
+                ON
+                paciente.id = ap.id_paciente
             INNER JOIN
-                pessoas medico ON medico.id = ap.id_medico
+                pessoas medico
+                ON
+                medico.id = ap.id_medico
             INNER JOIN
-                pessoas_juridicas pj ON ap.id_ubs = pj.id
+                pessoas_juridicas pj
+                ON
+                ap.id_ubs = pj.id
             INNER JOIN
-                pessoas ubs ON ubs.id = pj.id_pessoa
+                pessoas ubs
+                ON
+                ubs.id = pj.id_pessoa
             WHERE
                 medico.id = ?
-                AND DATE_FORMAT(ap.data, '%Y-%m') = ?
+                AND
+                DATE_FORMAT(ap.data, '%Y-%m') = ?
                 ",
             [$idMedico, $mesAno]
         );

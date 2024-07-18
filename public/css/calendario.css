@@ -1,24 +1,38 @@
-.itemDia{
-    border: 1px solid red;
-    width: 50px;
-    height: 50px;
+.calendario{
+  background-color: #EEE;
+  padding: 2em;
+}
+
+.calendario__cabecalho__item{
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-weight: 600;
+  font-size: .9em;
+}
+
+.calendario__dia{
+    width: 60px;
+    height: 60px;
     float: left;
     text-align: center;
-  }
-  .diaOutroMes{
-    border: 1px solid gray;
-    width: 50px;
-    height: 50px;
-    float: left;
-    text-align: center;
-  }
-  .hoje{
-    border: 1px solid green;
-    background-color: lightblue;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    align-items: center;
+    justify-content: center;
   }
 
-  .diaComEvento{
-    border: 1px solid green;
-    background-color: pink;
+  .calendario__dia--outro-mes{
+    background-color: #f6f6f6;
+    color: #BBB;
+  }
+  .calendario__dia--hoje{
+    background-color: var(--cor-azul-escuro);
+  }
+
+  .calendario__dia--com-evento{
+    background-color: var(--cor-vermelho-claro);
     cursor: pointer;
   }
